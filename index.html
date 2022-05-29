@@ -1,110 +1,135 @@
 <!DOCTYPE html>
 <html lang="ru">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./pages/index.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./pages/index.css" />
     <title>Mesto</title>
-</head>
-<body class="page">
-    <section class="form">
+  </head>
+  <body class="page">
+    <!--Добавить "form_opened" рядос с "form"-->
+    <div class="form">
+      <section class="form__popup">
         <div class="form__toggle">
-            <img class="form__x" src="./images/Close Icon.png" alt="">
+          <img class="form__x" src="./images/Close-Icon.png" alt="Закрыть" />
         </div>
-        
+        <div>
+          <h2 class="form__header">Редактировать профиль</h2>
+          <fieldset class="form__input">
+            <input class="form__line" type="text" placeholder="Имя" />
+            <input class="form__line" type="text" placeholder="О себе" />
+          </fieldset>
+          <button class="form__button" type="button">Сохранить</button>
         </div>
-            <div class="form__popup">
-                <div class="form__container">
-                <h2>Редактировать профиль</h2>
-                <fieldset class="form__input">
-                    <input class="form__line" type="text" placeholder="Имя">
-                    <input class="form__line" type="text" placeholder="Описание">
-                </fieldset>
-                <button class="form__button" type="button">Сохранить</button>
-                </div>
-            </div>
-        
-
-   <!-- </section>
+      </section>
+    </div>
     <header class="header">
-        <img class="logo" src="./images/Vector.png" alt="Логотип">
-
+      <img class="logo" src="./images/Vector.png" alt="Логотип" />
     </header>
     <main>
-        <section class="profile">
-            <div class="profile__container">
-                <img class="profile__avatar" src="./images/pexels-raphael-brasileiro-2228106.jpg" alt="">
-                <div class="profile__profile-info">
-                    <div class="profile__entry-field">
-                        <p class="profile__name">Одуванчик</p>
-                        <button class="profile__edit-button" type="button"></button>
-                    </div>
-                    <p class="profile__description">Обыкновенный полевой</p>
-                </div>
-                
+      <section class="profile">
+        <div class="profile__container">
+          <img
+            class="profile__avatar"
+            src="./images/pexels-raphael-brasileiro-2228106.jpg"
+            alt=""
+          />
+          <div class="profile__profile-info">
+            <div class="profile__entry-field">
+              <p class="profile__name">Одуванчик</p>
+              <button class="profile__edit-button" type="button"></button>
             </div>
-            <button class="profile__add-picture" type="button"></button>
-        
-        </section>
-
-        <section class="elements">
-            <ul class="elements__list">
-                <li class="elements__foto">
-                    <img class="elements__image" src="./images/cut_images_MQZkbTmdB0ADuOm/image_part_001.jpg" alt="">
-                    <div class="elements__place">
-                        <p class="elements__caption">На лугу</p>
-                        <p class="elements__like"><button type="button" class="elements__button" 
-                            text="&#9825;" hover-text="&#9829;"></button></p>
-                        </button>
-                    </div>
-                </li>
-                <li class="elements__foto">
-                    <img class="elements__image" src="./images/cut_images_MQZkbTmdB0ADuOm/image_part_002.jpg" alt="">
-                    <div class="elements__place">
-                        <p class="elements__caption">Вдоль дорог</p>
-                        <p class="elements__like"><button type="button" class="elements__button" 
-                            text="&#9825;" hover-text="&#9829;"></button></p>
-                    </div>
-                </li>
-                <li class="elements__foto" lass="elements__foto">
-                    <img class="elements__image" src="./images/cut_images_MQZkbTmdB0ADuOm/image_part_003.jpg" alt="">
-                    <div class="elements__place">
-                        <p class="elements__caption">На пустыре и среди травы</p>
-                        <p class="elements__like"><button type="button" class="elements__button" 
-                            text="&#9825;" hover-text="&#9829;"></button></p>
-                    </div>
-                </li>
-                <li class="elements__foto" class="elements__foto">
-                    <img class="elements__image" src="./images/cut_images_MQZkbTmdB0ADuOm/image_part_004.jpg" alt="">
-                    <div class="elements__place">
-                        <p class="elements__caption">Вдоль реки</p>
-                        <p class="elements__like"><button type="button" class="elements__button" 
-                            text="&#9825;" hover-text="&#9829;"></button></p>
-                    </div>
-                </li>
-                <li class="elements__foto" class="elements__foto">
-                    <img class="elements__image" src="./images/cut_images_MQZkbTmdB0ADuOm/image_part_005.jpg" alt="">
-                    <div class="elements__place">
-                        <p class="elements__caption">Возле озера</p>
-                        <p class="elements__like"><button type="button" class="elements__button" 
-                            text="&#9825;" hover-text="&#9829;"></button></p>
-                    </div>
-                </li>
-                <li class="elements__foto" class="elements__foto">
-                    <img class="elements__image" src="./images/cut_images_MQZkbTmdB0ADuOm/image_part_006.jpg" alt="">
-                    <div class="elements__place">
-                        <p class="elements__caption">На даче</p>
-                        <p class="elements__like"><button type="button" class="elements__button" 
-                            text="&#9825;" hover-text="&#9829;"></button></p>
-                    </div>
-                </li>
-            </ul>
-        </section>
+            <p class="profile__description">Обыкновенный полевой</p>
+          </div>
+        </div>
+        <button class="profile__add-picture" type="button"></button>
+      </section>
+      <section class="elements">
+        <ul class="elements__list">
+          <li class="elements__foto">
+            <img
+              class="elements__image"
+              src="./images/cut_images_MQZkbTmdB0ADuOm/image_part_001.jpg"
+              alt=""
+            />
+            <div class="elements__place">
+              <p class="elements__caption">На лугу</p>
+              <p class="elements__like">
+                <button type="button" class="elements__button"></button>
+              </p>
+            </div>
+          </li>
+          <li class="elements__foto">
+            <img
+              class="elements__image"
+              src="./images/cut_images_MQZkbTmdB0ADuOm/image_part_002.jpg"
+              alt=""
+            />
+            <div class="elements__place">
+              <p class="elements__caption">Вдоль дорог</p>
+              <p class="elements__like">
+                <button type="button" class="elements__button"></button>
+              </p>
+            </div>
+          </li>
+          <li class="elements__foto">
+            <img
+              class="elements__image"
+              src="./images/cut_images_MQZkbTmdB0ADuOm/image_part_003.jpg"
+              alt=""
+            />
+            <div class="elements__place">
+              <p class="elements__caption">На пустыре и среди травы</p>
+              <p class="elements__like">
+                <button type="button" class="elements__button"></button>
+              </p>
+            </div>
+          </li>
+          <li class="elements__foto">
+            <img
+              class="elements__image"
+              src="./images/cut_images_MQZkbTmdB0ADuOm/image_part_004.jpg"
+              alt=""
+            />
+            <div class="elements__place">
+              <p class="elements__caption">Вдоль реки</p>
+              <p class="elements__like">
+                <button type="button" class="elements__button"></button>
+              </p>
+            </div>
+          </li>
+          <li class="elements__foto">
+            <img
+              class="elements__image"
+              src="./images/cut_images_MQZkbTmdB0ADuOm/image_part_005.jpg"
+              alt=""
+            />
+            <div class="elements__place">
+              <p class="elements__caption">Возле озера</p>
+              <p class="elements__like">
+                <button type="button" class="elements__button"></button>
+              </p>
+            </div>
+          </li>
+          <li class="elements__foto">
+            <img
+              class="elements__image"
+              src="./images/cut_images_MQZkbTmdB0ADuOm/image_part_006.jpg"
+              alt=""
+            />
+            <div class="elements__place">
+              <p class="elements__caption">На даче</p>
+              <p class="elements__like">
+                <button type="button" class="elements__button"></button>
+              </p>
+            </div>
+          </li>
+        </ul>
+      </section>
     </main>
     <footer class="footer">
-        <p class="footer__copyright">&#169; 2022 Mesto Russia</p>
+      <p class="footer__copyright">&#169; 2022 Mesto Russia</p>
     </footer>
--->
-</body>
+  </body>
 </html>

@@ -1,0 +1,14 @@
+.form__header {
+    color: black;
+    margin: 34px auto 54px 36px;
+    font-weight: 900;
+    font-size: 24px;
+    line-height: 1.2;
+}
+@media screen and (max-width: 567px) {
+    .form__header {
+        font-size: 18px;
+        line-height: 1.2; 
+        margin: 25px auto 75px 22px;
+    }
+}

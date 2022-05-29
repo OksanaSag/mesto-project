@@ -1,3 +1,21 @@
 .form__line {
+    margin: 0 36px 30px;
+    border: 0;
+    border-bottom: 1px solid #545454;
+    box-sizing: border-box;
+    height: 27px;
     
+}
+.form__line:last-child {
+    margin-bottom: 48px;
+}
+.form__line:focus {
+    outline-color: #545454;
+}
+@media screen and (max-width: 567px) {
+    .form__line {
+        font-size: 14px;
+        line-height: 1.2; 
+        margin: 0 22px 30px;
+    }
 }

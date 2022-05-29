@@ -30,10 +30,5 @@
 @import url(../blocks/form/__x/form__x.css);
 @import url(../blocks/form/__popup/form__popup.css);
 @import url(../blocks/form/__toggle/form__toggle.css);
-@import url();
-@import url();
-@import url();
-@import url();
-@import url();
-@import url();
-@import url();
+@import url(../blocks/form/__header/form__header.css);
+@import url(../blocks/form/_opened/form_opened.css);

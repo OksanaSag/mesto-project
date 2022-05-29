@@ -1,2 +1,9 @@
-.form__x {
+.form__x:hover {
+    opacity: 0.6;
+}
+@media screen and (max-width: 567px) {
+    .form__x {
+        width: 20px;
+        height: 20px;
+    }
 }
