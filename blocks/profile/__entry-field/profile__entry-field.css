@@ -1,0 +1,5 @@
+.profile__entry-field {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}

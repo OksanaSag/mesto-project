@@ -1,0 +1,12 @@
+.form__popup {
+    width: 430px;
+    height: 330px;
+    margin: 0;
+    position: fixed;
+    left:0;
+    right:0;
+    top:0;
+    bottom:0;
+    margin: auto;
+    border: 1px solid red;
+}
