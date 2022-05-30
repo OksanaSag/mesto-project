@@ -21,8 +21,7 @@
 
 **Картинки** 
 
-picture.jpg
-
+![What is this](picture.jpg)
 [Ссылка на источник] (https://www.pexels.com/ru-ru/photo/164390/)
 
 Ссылка на проект https://oksanasag.github.io/mesto-project/index.html 
