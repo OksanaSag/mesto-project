@@ -1,13 +1,12 @@
 .form__popup {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: white;
-    border-radius: 10px;
-    width: 447px;
+    width: 430px;
     height: 330px;
-    z-index: 2;
+    background-color: #fff;
+    border-radius: 10px;
+    box-sizing: border-box;
+    margin-left: 50vw;
+    margin-top: 50vh;
+    transform: translate(-50%, -50%);
 }
 @media screen and (max-width: 567px) {
     .form__popup {
@@ -15,4 +14,3 @@
         height: 322px;
     }
 }
-

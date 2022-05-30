@@ -1,6 +1,7 @@
 .elements__button {
     background-color: white;
     border: none;
+    cursor: pointer;
   }
 .elements__button:before {
     content: '♡';

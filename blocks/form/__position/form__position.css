@@ -1,0 +1,8 @@
+.form__position {
+    padding: 34px 36px 37px;
+}
+@media screen and (max-width: 567px) {
+    .form__position {
+        padding: 25px 22px;
+      }
+}

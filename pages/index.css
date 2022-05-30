@@ -32,3 +32,4 @@
 @import url(../blocks/form/__toggle/form__toggle.css);
 @import url(../blocks/form/__header/form__header.css);
 @import url(../blocks/form/_opened/form_opened.css);
+@import url(../blocks/form/__position/form__position.css)
