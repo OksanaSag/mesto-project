@@ -24,4 +24,7 @@
 ![What is this](picture.jpg)
 [Ссылка на источник] (https://www.pexels.com/ru-ru/photo/164390/)
 
-Ссылка на проект https://oksanasag.github.io/mesto-project/index.html 
+![What is this](avatar.jpg)
+[Ссылка на источник] (https://www.pexels.com/ru-ru/photo/2228106/)
+
+**Ссылка на проект** https://oksanasag.github.io/mesto-project/index.html
