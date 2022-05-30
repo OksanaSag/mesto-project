@@ -6,4 +6,7 @@
     display: none;
     top: 0;
     left: 0;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
 }

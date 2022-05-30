@@ -1,11 +1,13 @@
 .form__toggle {
     position: absolute;
-    top: -40px;
-    right: -40px;
+    top: -45px;
+    right: -45px;
+    background-color: transparent;
+    border: none;
 }
 @media screen and (max-width: 567px) {
     .form__toggle {
-      top: -40px;
-      right: 0;
+        top: -40px;
+        right: -5px;
       }
 }

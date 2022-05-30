@@ -8,24 +8,8 @@
     <title>Mesto</title>
   </head>
   <body class="page">
-    <!--Добавить "form_opened" рядос с "form"-->
-    <div class="form ">
-      <section class="form__popup">
-        <div class="form__toggle">
-          <img class="form__x" src="./images/Close-Icon.png" alt="Закрыть" />
-        </div>
-        <div class="form__position">
-          <h2 class="form__header">Редактировать профиль</h2>
-          <fieldset class="form__input">
-            <input class="form__line" type="text" placeholder="Имя" />
-            <input class="form__line" type="text" placeholder="О себе" />
-          </fieldset>
-          <button class="form__button" type="button">Сохранить</button>
-        </div>
-      </section>
-    </div>
     <header class="header">
-      <img class="logo" src="./images/Vector.png" alt="Логотип" />
+      <img class="logo" src="./images/Logo.svg" alt="Логотип" />
     </header>
     <main>
       <section class="profile">
@@ -33,17 +17,17 @@
           <img
             class="profile__avatar"
             src="./images/avatar.jpg"
-            alt=""
+            alt="Изображение"
           />
           <div class="profile__profile-info">
             <div class="profile__entry-field">
-              <p class="profile__name">Одуванчик</p>
+              <h1 class="profile__name">Одуванчик</h1>
               <button class="profile__edit-button" type="button"></button>
             </div>
             <p class="profile__description">Обыкновенный полевой</p>
           </div>
         </div>
-        <button class="profile__add-picture" type="button"></button>
+        <button class="profile__add-picture" aria-label="Крестик" type="button"></button>
       </section>
       <section class="elements">
         <ul class="elements__list">
@@ -54,10 +38,8 @@
               alt=""
             />
             <div class="elements__place">
-              <p class="elements__caption">На лугу</p>
-              <p class="elements__like">
+              <h2 class="elements__caption">На лугу</h2>
                 <button type="button" class="elements__button"></button>
-              </p>
             </div>
           </li>
           <li class="elements__foto">
@@ -67,10 +49,8 @@
               alt=""
             />
             <div class="elements__place">
-              <p class="elements__caption">Вдоль дорог</p>
-              <p class="elements__like">
+              <h2 class="elements__caption">Вдоль дорог</h2>
                 <button type="button" class="elements__button"></button>
-              </p>
             </div>
           </li>
           <li class="elements__foto">
@@ -80,10 +60,8 @@
               alt=""
             />
             <div class="elements__place">
-              <p class="elements__caption">На пустыре и среди травы</p>
-              <p class="elements__like">
+              <h2 class="elements__caption">На пустыре и среди травы</h2>
                 <button type="button" class="elements__button"></button>
-              </p>
             </div>
           </li>
           <li class="elements__foto">
@@ -93,10 +71,8 @@
               alt=""
             />
             <div class="elements__place">
-              <p class="elements__caption">Вдоль реки</p>
-              <p class="elements__like">
+              <h2 class="elements__caption">Вдоль реки</h2>
                 <button type="button" class="elements__button"></button>
-              </p>
             </div>
           </li>
           <li class="elements__foto">
@@ -106,10 +82,8 @@
               alt=""
             />
             <div class="elements__place">
-              <p class="elements__caption">Возле озера</p>
-              <p class="elements__like">
+              <h2 class="elements__caption">Возле озера</h2>
                 <button type="button" class="elements__button"></button>
-              </p>
             </div>
           </li>
           <li class="elements__foto">
@@ -119,17 +93,32 @@
               alt=""
             />
             <div class="elements__place">
-              <p class="elements__caption">На даче</p>
-              <p class="elements__like">
-                <button type="button" class="elements__button"></button>
-              </p>
+              <h2 class="elements__caption">На даче</h2>             
+                <button type="button" class="elements__button"></button>           
             </div>
           </li>
         </ul>
       </section>
     </main>
     <footer class="footer">
-      <p class="footer__copyright">&#169; 2022 Mesto Russia</p>
+      <p class="footer__copyright">&copy; 2022 Mesto Russia</p>
     </footer>
+     <!--Добавить "form_opened" рядос с "form"-->
+     <div class="form ">
+        <div class="form__popup">
+          <button class="form__toggle" type="button">
+            <img class="form__x" src="./images/Close-Icon.svg" alt="Закрыть" />
+          </button>
+          <form  class="form__position" name="blank" action="#">
+            <h2 class="form__header">Редактировать профиль</h2>
+            <fieldset class="form__input">
+              <input class="form__line form__line_box_name" name="box-name" type="text" placeholder="Имя" />
+              <input class="form__line form__line_box_description" name="box-description" type="text" placeholder="О себе" />
+            </fieldset>
+            <button class="form__button" type="submit">Сохранить</button>
+          </form>
+          
+        </div>
+      </div>
   </body>
 </html>

@@ -1,12 +1,13 @@
 .profile__add-picture {
-    background-image: url(../../../images/Plus.png);
-    background-color: #000000;
+    background-image: url(../../../images/Plus.svg);
+    background-color: transparent;
     background-repeat: no-repeat;
     background-position: center;
     width: 150px;
     height: 50px;
     border: 2px solid white;
     cursor: pointer;
+    border-radius: 2px;
 }
 .profile__add-picture:hover {
     opacity: 0.6;
@@ -15,5 +16,10 @@
     .profile__add-picture {
         margin: 36px auto 0;
         width: 282px;
+    }
+}
+@media screen and (max-width: 590px) {
+    .profile__add-picture {
+        background-size: 16px;
     }
 }
