@@ -3,10 +3,12 @@
     width: 100vw;
     height: 100vh;
     position: fixed;
-    display: none;
+    visibility: hidden;
     top: 0;
     left: 0;
     align-content: center;
     justify-content: center;
     align-items: center;
+    opacity: 0;
+    transition: visibility 0s, opacity 0.3s linear;
 }

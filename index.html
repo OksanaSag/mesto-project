@@ -22,7 +22,7 @@
           <div class="profile__profile-info">
             <div class="profile__entry-field">
               <h1 class="profile__name">Одуванчик</h1>
-              <button class="profile__edit-button" type="button"></button>
+              <button class="profile__edit-button" id="profileOpen" type="button"></button>
             </div>
             <p class="profile__description">Обыкновенный полевой</p>
           </div>
@@ -31,9 +31,29 @@
           class="profile__add-picture"
           aria-label="Крестик"
           type="button"
+          id="profileOpenPicture"
         ></button>
       </section>
-      <section class="elements">
+
+    <section class="elements">
+        <ul class="elements__list">
+          <template id="elementsList">
+              <li class="elements__foto">
+                  <img
+                    class="elements__image"
+                    alt="Изображение"
+                  />
+                  <div class="elements__place">
+                    <h2 class="elements__caption"></h2>
+                    <button type="button" class="elements__button"></button>
+                  </div>
+                </li>
+          </template>
+          
+          </ul>
+          </section>
+
+      <!--<section class="elements">
         <ul class="elements__list">
           <li class="elements__foto">
             <img
@@ -102,15 +122,16 @@
             </div>
           </li>
         </ul>
-      </section>
+      </section>-->
+
     </main>
     <footer class="footer">
       <p class="footer__copyright">&copy; 2022 Mesto Russia</p>
     </footer>
     <!--Добавить "form_opened" рядос с "form"-->
-    <div class="form">
+    <div class="form" id="formOpen">
       <div class="form__popup">
-        <button class="form__toggle" type="button">
+        <button class="form__toggle" id="formClose" type="button">
           <img class="form__x" src="./images/Close-Icon.svg" alt="Закрыть" />
         </button>
         <form class="form__position" name="blank" action="#">
@@ -120,18 +141,51 @@
               class="form__line form__line_box_name"
               name="box-name"
               type="text"
-              placeholder="Имя"
+              value="Одуванчик"
+              id="inputId"
             />
             <input
               class="form__line form__line_box_description"
               name="box-description"
               type="text"
-              placeholder="О себе"
+              value="Обыкновенный полевой"
+              id="inputId"
             />
           </fieldset>
-          <button class="form__button" type="submit">Сохранить</button>
+         <button class="form__button" type="submit">Сохранить</button>
         </form>
       </div>
     </div>
+
+    <div class="form" id="formOpenPicture">
+        <div class="form__popup">
+          <button class="form__toggle" id="formClosePicture" type="button">
+            <img class="form__x" src="./images/Close-Icon.svg" alt="Закрыть" />
+          </button>
+          <form class="form__position" name="blank" action="#" id="form-Position">
+            <h2 class="form__header">Новое место</h2>
+            <fieldset class="form__input">
+              <input
+                class="form__line form__line_box_name"
+                name="box-name"
+                type="text"
+                placeholder="Название"
+                id="inputNamePicture"
+              />
+              <input
+                class="form__line form__line_box_description"
+                name="box-description"
+                type="text"
+                placeholder="Ссылка на картинку"
+                id="inputPicture"
+              />
+            </fieldset>
+           <button class="form__button" type="submit">Сохранить</button>
+          </form>
+        </div>
+    </div>
+
+
+    <script src="./script.js"></script>
   </body>
 </html>
