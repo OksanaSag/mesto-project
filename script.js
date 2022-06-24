@@ -23,6 +23,7 @@ closePopup.addEventListener('click', closeFunction);
 popupPicture.addEventListener('click', openFunctionPicture);
 popupClose.addEventListener('click', closeFunctionPicture);
 
+
 const formElement = document.querySelector('.form__position');
 const nameInput = document.querySelector('.form__line_box_name');
 const jobInput = document.querySelector('.form__line_box_description');
@@ -36,7 +37,7 @@ function formSubmitHandler (evt) {
 }
 formElement.addEventListener('submit', formSubmitHandler);
 
- let initialCards = [
+ const initialCards = [
     {
       name: 'Архыз',
       link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
@@ -64,42 +65,59 @@ formElement.addEventListener('submit', formSubmitHandler);
     ];
 
 
+
+
     const template = document.querySelector('#elementsList');
-    
-    function ReDraw(arr){
-        arr.forEach((function (element) {
+    function Draw(element, isPretend = false){
         const clone = template.content.cloneNode(true);
+    
         const elelementsCaption = clone.querySelector('.elements__caption');
         const img = clone.querySelector('.elements__image');
+    
+        const like = clone.querySelector('.elements__button');
+
+        like.addEventListener('click', function (evt) {
+            evt.target.classList.toggle('elements__button_active');
+
+        });
+        const deleteButton = clone.querySelector('.elements__trash');
+        deleteButton.addEventListener('click', function () {
+               const listItem = deleteButton.closest('.elements__foto');
+       
+               listItem.remove();
+       });
+
+    
         elelementsCaption.textContent = element.name;
         img.src = element.link;
         clone.querySelector('li').classList.add('removeIt');
-        template.parentNode.appendChild(clone);
+        if(isPretend)
+            template.parentNode.prepend(clone);
+        else
+           template.parentNode.append(clone);
+         
+    }
+
+    initialCards.forEach((function (element) {
+        Draw(element);
       }))
-    }
-ReDraw(initialCards);
-      function removeAllChildNodes(parent) {
-        const arr = parent.querySelectorAll('.removeIt');
-        arr.forEach((function (element) {
-            element.remove();
-        }))
-    }
-const formPosition = document.getElementById('form-Position');
-const namePicture = document.getElementById('inputNamePicture');
-const linkPicture = document.getElementById('inputPicture');
 
-function addPicture(evt) {
-    evt.preventDefault();
-    const element  = [{ name : namePicture.value, link:linkPicture.value }];
-    initialCards = element.concat(initialCards);
 
-    removeAllChildNodes(template.parentNode);
-    ReDraw(initialCards);
-    closeFunctionPicture();
-}
-formPosition.addEventListener('submit', addPicture);
 
-     
-
+      const formPosition = document.getElementById('form-Position');
+      const namePicture = document.getElementById('inputNamePicture');
+      const linkPicture = document.getElementById('inputPicture');
+      
+      function addPicture(evt) {
+          evt.preventDefault();
+          const element  = {name:namePicture.value, link:linkPicture.value };
+          Draw(element, true);
+          closeFunctionPicture();
+      }
+      formPosition.addEventListener('submit', addPicture);   
+            like.onclick = function(evt) {
+            evt.target.classList.toggle('elements__button_active'); 
+        }
     
-    
+        
+        
