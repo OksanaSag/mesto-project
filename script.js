@@ -74,12 +74,11 @@ formElement.addEventListener('submit', formSubmitHandler);
         const elelementsCaption = clone.querySelector('.elements__caption');
         const img = clone.querySelector('.elements__image');
     
-        const like = clone.querySelector('.elements__button');
+        const likeButton = clone.querySelector('.elements__button');
+         likeButton.onclick = function(evt) {
+         evt.target.classList.toggle('elements__button_active'); 
+        };
 
-        like.addEventListener('click', function (evt) {
-            evt.target.classList.toggle('elements__button_active');
-
-        });
         const deleteButton = clone.querySelector('.elements__trash');
         deleteButton.addEventListener('click', function () {
                const listItem = deleteButton.closest('.elements__foto');
@@ -114,10 +113,7 @@ formElement.addEventListener('submit', formSubmitHandler);
           Draw(element, true);
           closeFunctionPicture();
       }
-      formPosition.addEventListener('submit', addPicture);   
-            like.onclick = function(evt) {
-            evt.target.classList.toggle('elements__button_active'); 
-        }
-    
+     
+      formPosition.addEventListener('submit', addPicture);  
         
         
