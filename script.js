@@ -5,6 +5,8 @@ const popupPicture = document.getElementById('profileOpenPicture');
 const formPicture = document.getElementById('formOpenPicture');
 const popupClose = document.getElementById('formClosePicture');
 
+
+
 function openFunction () {
     popup.classList.add('form_opened'); 
 }
@@ -17,6 +19,7 @@ function openFunctionPicture () {
 function closeFunctionPicture  () {
     formPicture.classList.remove('form_opened');
 }
+
 
 openPopup.addEventListener('click', openFunction);
 closePopup.addEventListener('click', closeFunction);
@@ -64,8 +67,16 @@ formElement.addEventListener('submit', formSubmitHandler);
     }
     ];
 
-
-
+    
+    function openPicture (evt) {
+        const popupbigPicture = document.querySelector('.bigPicture');
+        popupbigPicture.querySelector('.bigPicture__image').src = evt.target.src;
+        const kakaha = popupbigPicture.querySelector('.bigPicture__caption');
+       // popupbigPicture.querySelector('.bigPicture__caption')
+       kakaha.textContent = evt.target.parentNode.querySelector('h2').textContent;
+        popupbigPicture.classList.add('form_opened'); 
+       }
+    
 
     const template = document.querySelector('#elementsList');
     function Draw(element, isPretend = false){
@@ -78,15 +89,27 @@ formElement.addEventListener('submit', formSubmitHandler);
          likeButton.onclick = function(evt) {
          evt.target.classList.toggle('elements__button_active'); 
         };
+    
+       
 
         const deleteButton = clone.querySelector('.elements__trash');
         deleteButton.addEventListener('click', function () {
                const listItem = deleteButton.closest('.elements__foto');
        
                listItem.remove();
+
        });
+       
 
     
+
+       const elementsImage = clone.querySelector('.elements__image');
+      
+       elementsImage.addEventListener('click', openPicture);
+
+
+      
+       
         elelementsCaption.textContent = element.name;
         img.src = element.link;
         clone.querySelector('li').classList.add('removeIt');
