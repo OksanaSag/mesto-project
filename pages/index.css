@@ -30,4 +30,10 @@
 @import url(../blocks/form/__toggle/form__toggle.css);
 @import url(../blocks/form/__header/form__header.css);
 @import url(../blocks/form/_opened/form_opened.css);
-@import url(../blocks/form/__position/form__position.css)
+@import url(../blocks/form/__position/form__position.css);
+@import url(../blocks/elements/__button_active/elements__button_active.css);
+@import url(../blocks/elements/__trash/elements__trash.css);
+@import url(../blocks/bigPicture/bigPicture.css);
+@import url(../blocks/bigPicture/__caption/bigPicture__caption.css);
+@import url(../blocks/bigPicture/__image/bigPicture__image.css);
+@import url(../blocks/bigPicture/__position/bigPicture__position.css);
