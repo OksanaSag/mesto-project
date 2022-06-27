@@ -25,11 +25,11 @@
 
 **Картинки** 
 
-'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
-'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
-'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
-'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
-'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
+'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'<br/>
+'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'<br/>
+'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'<br/>
+'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'<br/>
+'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'<br/>
 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
 
 **Ссылка на проект** https://oksanasag.github.io/mesto-project/
