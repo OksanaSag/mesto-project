@@ -28,11 +28,11 @@ const formElement = document.querySelector('.form__position');
 const nameInput = document.querySelector('.form__line_box_name');
 const jobInput = document.querySelector('.form__line_box_description');
 const profilename = document.querySelector('.profile__name');
-const profiledescription = document.querySelector('.profile__description');
+const profileDescription = document.querySelector('.profile__description');
 function formSubmitHandler (evt) {
     evt.preventDefault(); 
     profilename.textContent = nameInput.value;
-    profiledescription.textContent = jobInput.value;
+    profileDescription.textContent = jobInput.value;
     closeFunction(evt);
 }
 formElement.addEventListener('submit', formSubmitHandler);
