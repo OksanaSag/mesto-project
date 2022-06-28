@@ -3,6 +3,12 @@
     line-height: 1.14;
     margin: 0 18px 0 0;
     font-weight: 500;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+.profile__name:hover {
+    text-overflow: clip;
+    white-space: normal;   
 }
 @media screen and (max-width: 337px) {
     .profile__name {

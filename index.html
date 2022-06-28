@@ -53,84 +53,13 @@
           </template>
         </ul>
       </section>
-
-      <!--<section class="elements">
-        <ul class="elements__list">
-          <li class="elements__foto">
-            <img
-              class="elements__image"
-              src="./images/cut_images_MQZkbTmdB0ADuOm/image_part_001.jpg"
-              alt="Изображение"
-            />
-            <div class="elements__place">
-              <h2 class="elements__caption">На лугу</h2>
-              <button type="button" class="elements__button"></button>
-            </div>
-          </li>
-          <li class="elements__foto">
-            <img
-              class="elements__image"
-              src="./images/cut_images_MQZkbTmdB0ADuOm/image_part_002.jpg"
-              alt="Изображение"
-            />
-            <div class="elements__place">
-              <h2 class="elements__caption">Вдоль дорог</h2>
-              <button type="button" class="elements__button"></button>
-            </div>
-          </li>
-          <li class="elements__foto">
-            <img
-              class="elements__image"
-              src="./images/cut_images_MQZkbTmdB0ADuOm/image_part_003.jpg"
-              alt="Изображение"
-            />
-            <div class="elements__place">
-              <h2 class="elements__caption">На пустыре и среди травы</h2>
-              <button type="button" class="elements__button"></button>
-            </div>
-          </li>
-          <li class="elements__foto">
-            <img
-              class="elements__image"
-              src="./images/cut_images_MQZkbTmdB0ADuOm/image_part_004.jpg"
-              alt="Изображение"
-            />
-            <div class="elements__place">
-              <h2 class="elements__caption">Вдоль реки</h2>
-              <button type="button" class="elements__button"></button>
-            </div>
-          </li>
-          <li class="elements__foto">
-            <img
-              class="elements__image"
-              src="./images/cut_images_MQZkbTmdB0ADuOm/image_part_005.jpg"
-              alt="Изображение"
-            />
-            <div class="elements__place">
-              <h2 class="elements__caption">Возле озера</h2>
-              <button type="button" class="elements__button"></button>
-            </div>
-          </li>
-          <li class="elements__foto">
-            <img
-              class="elements__image"
-              src="./images/cut_images_MQZkbTmdB0ADuOm/image_part_006.jpg"
-              alt="Изображение"
-            />
-            <div class="elements__place">
-              <h2 class="elements__caption">На даче</h2>
-              <button type="button" class="elements__button"></button>
-            </div>
-          </li>
-        </ul>
-      </section>-->
     </main>
     <footer class="footer">
       <p class="footer__copyright">&copy; 2022 Mesto Russia</p>
     </footer>
-    <!--Добавить "form_opened" рядос с "form"-->
+
     <div class="form" id="formOpen">
-      <div class="form__popup">
+      <div class="form__popup form__popup_size-s">
         <button class="form__toggle" id="formClose" type="button">
           <img class="form__x" src="./images/Close-Icon.svg" alt="Закрыть" />
         </button>
@@ -142,12 +71,14 @@
               name="box-name"
               type="text"
               value="Одуванчик"
+              placeholder="Ваше имя"
             />
             <input
               class="form__line form__line_box_description"
               name="box-description"
               type="text"
               value="Обыкновенный полевой"
+              placeholder="Описание"
             />
           </fieldset>
           <button class="form__button" type="submit">Сохранить</button>
@@ -156,11 +87,16 @@
     </div>
 
     <div class="form" id="formOpenPicture">
-      <div class="form__popup">
+      <div class="form__popup form__popup_size-s">
         <button class="form__toggle" id="formClosePicture" type="button">
           <img class="form__x" src="./images/Close-Icon.svg" alt="Закрыть" />
         </button>
-        <form class="form__position" name="blank" action="#" id="form-Position">
+        <form
+          class="form__position"
+          name="blank-picture"
+          action="#"
+          id="form-Position"
+        >
           <h2 class="form__header">Новое место</h2>
           <fieldset class="form__input">
             <input
@@ -182,21 +118,17 @@
         </form>
       </div>
     </div>
-    <div class="bigPicture">
-      <div class="bigPicture__position">
-        <div>
-          <button class="form__toggle" id="formCloseBigPicture" type="button">
-            <img class="form__x" src="./images/Close-Icon.svg" alt="Закрыть" />
-          </button>
-          <img
-            class="bigPicture__image"
-            alt="Изображение"
-          />
-          <p class="bigPicture__caption"></p>
-        </div>
+
+    <div class="form" id="bigPicture">
+      <div class="form__popup form__popup_size-l">
+        <button class="form__toggle" id="formCloseBigPicture" type="button">
+          <img class="form__x" src="./images/Close-Icon.svg" alt="Закрыть" />
+        </button>
+        <img class="form__image" src="#" alt="Изображение" />
+        <p class="form__caption"></p>
       </div>
     </div>
-
-    <script src="./script.js"></script>
+    <script src="./scripts/cards.js"></script>
+    <script src="./scripts/index.js"></script>
   </body>
 </html>

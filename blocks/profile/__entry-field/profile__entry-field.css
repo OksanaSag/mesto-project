@@ -3,9 +3,11 @@
     justify-content: space-between;
     align-items: center;
     margin-bottom: 16px;
+    max-width: 290px;
 }
-@media screen and (max-width: 337px) {
+@media screen and (max-width: 359px) {
     .profile__entry-field  {
         margin-bottom: 5px;
+        max-width: 260px;
     }
 }

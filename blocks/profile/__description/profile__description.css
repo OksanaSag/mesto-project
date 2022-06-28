@@ -2,15 +2,20 @@
     font-size: 18px;
     line-height: 1.2;
     margin: 0;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    max-width: 290px;
+    white-space: nowrap;
 }
 @media screen and (max-width: 590px) {
     .profile__description {
         margin-bottom: 0;
     }
 }
-@media screen and (max-width: 337px) {
+@media screen and (max-width: 359px) {
     .profile__description {
         font-size: 14px;
         line-height: 1.2;
+        max-width: 260px;
     }
 }
