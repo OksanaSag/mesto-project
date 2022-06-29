@@ -40,7 +40,7 @@ function editProfile(evt) {
     const popupBigPicture = document.querySelector('#bigPicture');
 function openPicture (evt) {
     popupBigPicture.querySelector('.form__image').src = evt.target.src;
-    popupBigPicture.querySelector('.form__image').alt = 'Изображениe';
+    popupBigPicture.querySelector('.form__image').alt = evt.target.alt;
     const pictureCaption = popupBigPicture.querySelector('.form__caption');
     pictureCaption.textContent = evt.target.parentNode.querySelector('.elements__caption').textContent;
     openPopup(evt);
@@ -68,7 +68,7 @@ function createCard(element){
     elementImage.formOpen = document.querySelector('#bigPicture'); 
     elelementsCaption.textContent = element.name;
     elementImage.src = element.link;
-    elementImage.alt = 'Изображениe';
+    elementImage.alt = element.name;
     return clone;
 }
 
