@@ -83,8 +83,8 @@ function insertToContainer(cardElement, isPretend = false) {
         insertToContainer(createCard(element));
     }))
 
-    const namePicture = document.getElementById('inputNamePicture');
-    const linkPicture = document.getElementById('inputPicture');
+    const namePicture = document.getElementById('title-input');
+    const linkPicture = document.getElementById('url-input');
       
 function addPicture(evt) {
     evt.preventDefault();

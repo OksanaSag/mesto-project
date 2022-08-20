@@ -37,3 +37,12 @@
 @import url(../blocks/form/__popup/_size-s/form__popup_size-s.css);
 @import url(../blocks/form/__popup/_size-l/form__popup_size-l.css);
 @import url(../blocks/form/__caption/form__caption.css);
+@import url(../blocks/form/__input-error/form__input-error.css);
+@import url(../blocks/name-input-error/name-input-error.css);
+@import url(../blocks/form/__line/_type_error/form__line_type_error.css);
+@import url(../blocks/form/__line-error_active/form__line-error_active.css);
+@import url(../blocks/form/__button/_inactive/form__button_inactive.css);
+@import url(../blocks/form/__button/_active/form__button_active.css);
+@import url(../blocks/title-input-error/title-input-error.css);
+@import url(../blocks/form);
+@import url(../blocks/form);

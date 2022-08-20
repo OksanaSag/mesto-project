@@ -57,13 +57,13 @@
     <footer class="footer">
       <p class="footer__copyright">&copy; 2022 Mesto Russia</p>
     </footer>
-
+<div class="qwe">
     <div class="form" id="formOpen">
       <div class="form__popup form__popup_size-s">
         <button class="form__toggle" id="formClose" type="button">
           <img class="form__x" src="./images/Close-Icon.svg" alt="Закрыть" />
         </button>
-        <form class="form__position" name="blank" action="#" id="profileName">
+        <form class="form__position" name="blank" action="#" id="profileName" novalidate>
           <h2 class="form__header">Редактировать профиль</h2>
           <fieldset class="form__input">
             <input
@@ -72,14 +72,22 @@
               type="text"
               value="Одуванчик"
               placeholder="Ваше имя"
+              required
+              minlength="2" maxlength="40"
+              id="name-input"
             />
+            <span class="form__input-error name-input-error"></span>
             <input
               class="form__line form__line_box_description"
               name="box-description"
               type="text"
               value="Обыкновенный полевой"
               placeholder="Описание"
+              required
+              minlength="2" maxlength="200"
+              id="description-input"
             />
+            <span class="form__input-error description-input-error"></span>
           </fieldset>
           <button class="form__button" type="submit">Сохранить</button>
         </form>
@@ -96,6 +104,7 @@
           name="blank-picture"
           action="#"
           id="profilePicture"
+          novalidate
         >
           <h2 class="form__header">Новое место</h2>
           <fieldset class="form__input">
@@ -104,21 +113,26 @@
               name="box-name"
               type="text"
               placeholder="Название"
-              id="inputNamePicture"
+              id="title-input"
+              required
+              minlength="2" maxlength="30"
             />
+            <span class="form__input-error title-input-error"></span>
             <input
               class="form__line form__line_box_description"
               name="box-description"
-              type="text"
+              type="url"
               placeholder="Ссылка на картинку"
-              id="inputPicture"
+              id="url-input"
+              required
             />
+            <span class="form__input-error url-input-error"></span>
           </fieldset>
           <button class="form__button" type="submit">Сохранить</button>
         </form>
       </div>
     </div>
-
+  </div>
     <div class="form form__popup_size-l" id="bigPicture">
       <div class="form__popup">
         <button class="form__toggle" id="formCloseBigPicture" type="button">
@@ -128,7 +142,9 @@
         <p class="form__caption"></p>
       </div>
     </div>
+  
     <script src="./scripts/cards.js"></script>
     <script src="./scripts/index.js"></script>
+    <script src="./scripts/validation.js"></script>
   </body>
 </html>
