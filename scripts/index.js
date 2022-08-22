@@ -17,13 +17,26 @@
     formEditProfile.formClose = document.querySelector('#formOpen'); 
     newPictureForm.formClose = document.querySelector('#formOpenPicture'); 
     bigPictureClose.formClose = document.querySelector('#bigPicture'); 
+    
 
 function openPopup(evt) {
     evt.currentTarget.formOpen.classList.add('form_opened');
+    document.addEventListener('keydown', closeEscape);
+    const formArea = document.querySelectorAll('.form');
+    formArea.forEach((function (element) {
+        element.addEventListener('click', closePopup);
+    }))
+   
 }
 function closePopup(evt) {
-    evt.currentTarget.formClose.classList.remove('form_opened');
+    document.querySelector('.form_opened').classList.remove('form_opened');
 }
+
+function closeEscape(evt) {
+    if (evt.key === 'Escape') {
+        closePopup(evt);
+    };
+} 
 
     const nameInput = document.querySelector('.form__line_box_name');
     const jobInput = document.querySelector('.form__line_box_description');
