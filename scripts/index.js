@@ -22,12 +22,28 @@
 function openPopup(evt) {
     evt.currentTarget.formOpen.classList.add('form_opened');
     document.addEventListener('keydown', closeEscape);
-    const formArea = document.querySelectorAll('.form');
-    formArea.forEach((function (element) {
-        element.addEventListener('click', closePopup);
-    }))
-   
+
+    const form = Array.from(document.querySelectorAll('.form'));
+    form.forEach((overlayElement) => {
+        overlayElement.addEventListener('click', closeOverlay);
+    })
 }
+
+
+
+function closeOverlay(evt) {
+    const form_opened = document.querySelector('.form_opened');
+    const formArea = form_opened.querySelector('.form__popup');
+    const withinBoundaries = evt.composedPath().includes(formArea);
+    if ( ! withinBoundaries ) {
+        closePopup(evt);
+    }
+}
+
+
+
+
+//переделать!
 function closePopup(evt) {
     document.querySelector('.form_opened').classList.remove('form_opened');
 }
