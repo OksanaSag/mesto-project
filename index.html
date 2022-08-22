@@ -57,7 +57,6 @@
     <footer class="footer">
       <p class="footer__copyright">&copy; 2022 Mesto Russia</p>
     </footer>
-<div class="qwe">
     <div class="form" id="formOpen">
       <div class="form__popup form__popup_size-s">
         <button class="form__toggle" id="formClose" type="button">
@@ -75,6 +74,8 @@
               required
               minlength="2" maxlength="40"
               id="name-input"
+              pattern="^[а-яА-ЯёЁa-zA-Z -]+$"
+              data-error-message="Разрешены только латинские буквы, кириллические буквы, знаки дефиса и пробелы"
             />
             <span class="form__input-error name-input-error"></span>
             <input
@@ -86,6 +87,8 @@
               required
               minlength="2" maxlength="200"
               id="description-input"
+              pattern="^[а-яА-ЯёЁa-zA-Z -]+$"
+              data-error-message="Разрешены только латинские буквы, кириллические буквы, знаки дефиса и пробелы"
             />
             <span class="form__input-error description-input-error"></span>
           </fieldset>
@@ -116,6 +119,8 @@
               id="title-input"
               required
               minlength="2" maxlength="30"
+              pattern="^[а-яА-ЯёЁa-zA-Z -]+$"
+              data-error-message="Разрешены только латинские буквы, кириллические буквы, знаки дефиса и пробелы"
             />
             <span class="form__input-error title-input-error"></span>
             <input
@@ -132,7 +137,7 @@
         </form>
       </div>
     </div>
-  </div>
+ 
     <div class="form form__popup_size-l" id="bigPicture">
       <div class="form__popup">
         <button class="form__toggle" id="formCloseBigPicture" type="button">
