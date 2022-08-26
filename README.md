@@ -1,35 +1,19 @@
 # Проект: Место
 
-Проект подготовлен в рамках третьего месяца обучения на Яндекс Практикум. Внедрение JS в выполенный ранее проект.
+Проект подготовлен в рамках пятого месяца обучения на Яндекс Практикум. Настройка сборки Webpack, транспиляция JavaScript и минификация кода
 
 **Использованные технологии:**
-- HTML
-- CSS
 - Javascript
-
-* Flex
-* Grid
-* Адаптивная верстка
-* Формы
-* Функции
+- Webpack
 
 **Инструменты:**
 * Figma
-* Картинки
 * VScode
 * Github
 
 **Figma**
 
-* [Ссылка на макет в Figma](https://www.figma.com/file/bjyvbKKJN2naO0ucURl2Z0/JavaScript.-Sprint-5)
+* [Ссылки на макет в Figma](https://www.figma.com/file/kRVLKwYG3d1HGLvh7JFWRT/JavaScript.-Sprint-6?node-id=0%3A1 https://www.figma.com/file/PSdQFRHoxXJFs2FH8IXViF/JavaScript.-Sprint-9?node-id=0%3A1)
 
-**Картинки** 
 
-'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'<br/>
-'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'<br/>
-'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'<br/>
-'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'<br/>
-'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'<br/>
-'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
-
-**Ссылка на проект** https://oksanasag.github.io/mesto-project/
+**Ссылка на проект** https://github.com/OksanaSag/mesto-project
