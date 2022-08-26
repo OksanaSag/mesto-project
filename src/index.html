@@ -4,19 +4,18 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="./pages/index.css" />
     <title>Mesto</title>
   </head>
   <body class="page">
     <header class="header">
-      <img class="logo" src="./images/Logo.svg" alt="Логотип" />
+      <img class="logo" src="<%=require('./images/Logo.svg')%>" alt="Логотип" />
     </header>
     <main>
       <section class="profile">
         <div class="profile__container">
           <img
             class="profile__avatar"
-            src="./images/avatar.jpg"
+            src="<%=require('./images/avatar.jpg')%>"
             alt="Изображение"
           />
           <div class="profile__profile-info">
@@ -60,7 +59,7 @@
     <div class="form" id="formOpen">
       <div class="form__popup form__popup_size-s">
         <button class="form__toggle" id="formClose" type="button">
-          <img class="form__x" src="./images/Close-Icon.svg" alt="Закрыть" />
+          <img class="form__x" src="<%=require('./images/Close-Icon.svg')%>" alt="Закрыть" />
         </button>
         <form class="form__position" name="blank" action="#" id="profileName" novalidate>
           <h2 class="form__header">Редактировать профиль</h2>
@@ -100,7 +99,7 @@
     <div class="form" id="formOpenPicture">
       <div class="form__popup form__popup_size-s">
         <button class="form__toggle" id="formClosePicture" type="button">
-          <img class="form__x" src="./images/Close-Icon.svg" alt="Закрыть" />
+          <img class="form__x" src="<%=require('./images/Close-Icon.svg')%>" alt="Закрыть" />
         </button>
         <form
           class="form__position"
@@ -141,13 +140,12 @@
     <div class="form form__popup_size-l" id="bigPicture">
       <div class="form__popup">
         <button class="form__toggle" id="formCloseBigPicture" type="button">
-          <img class="form__x" src="./images/Close-Icon.svg" alt="Закрыть" />
+          <img class="form__x" src="<%=require('./images/Close-Icon.svg')%>" alt="Закрыть" />
         </button>
         <img class="form__image" src="#" alt="Изображение" />
         <p class="form__caption"></p>
       </div>
     </div>
   
-    <script type="module" src="./scripts/index.js"></script>
   </body>
 </html>

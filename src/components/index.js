@@ -1,3 +1,4 @@
+    import '../pages/index.css';
     import {initialCards} from './cards.js';
     import {toggleButtonState, enableValidation} from './validate.js';
     import {openPopup, closePopup} from './modal.js';
@@ -25,6 +26,16 @@
     const profileDescription = document.querySelector('.profile__description');  
     export const template = document.querySelector('#elementsList');
     export const popupBigPicture = document.querySelector('#bigPicture');
+    const enable = {
+        formSelector: '.form',
+        formPopup: '.form__position',
+        inputSelector: '.form__line',
+        submitButtonSelector: '.form__button',
+        inactiveButtonClass: 'form__button_inactive',
+        activeButtonClass: 'form__button_active',
+        inputErrorClass: 'form__line_type_error',
+        errorClass: 'form__line-error_active'
+      }; 
 
     function addPicture(evt) {
         evt.preventDefault();
@@ -53,17 +64,6 @@
     formEditProfile.addEventListener('submit', editProfile);
     newPictureForm.addEventListener('submit', addPicture);  
 
-    const enable = {
-        formSelector: '.form',
-        formPopup: '.form__position',
-        inputSelector: '.form__line',
-        submitButtonSelector: '.form__button',
-        inactiveButtonClass: 'form__button_inactive',
-        activeButtonClass: 'form__button_active',
-        inputErrorClass: 'form__line_type_error',
-        errorClass: 'form__line-error_active'
-      }; 
-      
     enableValidation(enable); 
     
         
