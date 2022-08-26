@@ -53,6 +53,21 @@
     formEditProfile.addEventListener('submit', editProfile);
     newPictureForm.addEventListener('submit', addPicture);  
 
-    enableValidation(); 
+    const enable = {
+        formSelector: '.form',
+        formPopup: '.form__position',
+        inputSelector: '.form__line',
+        submitButtonSelector: '.form__button',
+        inactiveButtonClass: 'form__button_inactive',
+        activeButtonClass: 'form__button_active',
+        inputErrorClass: 'form__line_type_error',
+        errorClass: 'form__line-error_active'
+      }; 
+      
+    enableValidation(enable); 
+    
+        
+      
+      
         
         
