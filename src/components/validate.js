@@ -38,6 +38,10 @@ export const toggleButtonState = (inputList, buttonElement, enable) => {
         buttonElement.disabled = false;
     }
 }; 
+export const disableButton = (enable, buttonEnable) => {
+    buttonEnable.classList.add(enable.inactiveButtonClass);
+    buttonEnable.classList.remove(enable.activeButtonClass);
+}
 const setEventListeners = (formElement, enable) => {
     const inputList = Array.from(formElement.querySelectorAll(enable.inputSelector));
     const buttonElement = formElement.querySelector(enable.submitButtonSelector);
@@ -62,6 +66,3 @@ export const enableValidation = (enable) => {
         });
     });
 };
-
-
-

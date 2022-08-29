@@ -1,6 +1,6 @@
     import '../pages/index.css';
     import {initialCards} from './cards.js';
-    import {enableValidation} from './validate.js';
+    import {enableValidation, disableButton} from './validate.js';
     import {openPopup, closePopup} from './modal.js';
     import {createCard, insertToContainer} from './card.js';
     
@@ -28,6 +28,8 @@
     export const popupBigPicture = document.querySelector('#bigPicture');
     export const pictureCaption = popupBigPicture.querySelector('.form__caption');
     export const formImage = popupBigPicture.querySelector('.form__image');
+    const buttonSubmit = newPictureButton.formOpen.querySelector('.form__button');
+
     const enable = {
         formSelector: '.form',
         formPopup: '.form__position',
@@ -37,7 +39,7 @@
         activeButtonClass: 'form__button_active',
         inputErrorClass: 'form__line_type_error',
         errorClass: 'form__line-error_active'
-      }; 
+    }; 
 
     function addPicture(evt) {
         evt.preventDefault();
@@ -45,10 +47,9 @@
         insertToContainer(createCard(element),true);
         namePicture.value = '';
         linkPicture.value = '';
+        disableButton(enable, buttonSubmit);
         closePopup(evt);
-        enableValidation(enable);
     }
-    
     function editProfile(evt) {
         evt.preventDefault(); 
         profileName.textContent = nameInput.value;
