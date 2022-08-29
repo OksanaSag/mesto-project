@@ -50,7 +50,6 @@ const setEventListeners = (formElement, enable) => {
         });
     });
 };
-
 export const enableValidation = (enable) => {
     const formList = Array.from(document.querySelectorAll(enable.formSelector));
     formList.forEach((formElement) => {

@@ -1,4 +1,5 @@
-import {popupBigPicture} from './index.js';
+import {popupBigPicture, pictureCaption, formImage} from './index.js';
+
 export function openPopup(evt) {
     evt.currentTarget.formOpen.classList.add('form_opened');
     document.addEventListener('keydown', closeEscape);
@@ -19,17 +20,23 @@ function closeOverlay(evt) {
     }
 }
 export function closePopup(evt) {
+    document.removeEventListener('keydown', closeEscape);
+    const form = Array.from(document.querySelectorAll('.form'));
+    form.forEach((overlayElement) => {
+        overlayElement.removeEventListener('click', closeOverlay);
+    })
     document.querySelector('.form_opened').classList.remove('form_opened');
 }
 function closeEscape(evt) {
     if (evt.key === 'Escape') {
-        closePopup(evt);
+        //--//
+        const openedPopup = document.querySelector('.form_opened');
+        closePopup(openedPopup);
     };
 } 
 export function openPicture(evt) {
-    popupBigPicture.querySelector('.form__image').src = evt.target.src;
-    popupBigPicture.querySelector('.form__image').alt = evt.target.alt;
-    const pictureCaption = popupBigPicture.querySelector('.form__caption');
+    formImage.src = evt.target.src;
+    formImage.alt = evt.target.alt;
     pictureCaption.textContent = evt.target.parentNode.querySelector('.elements__caption').textContent;
     openPopup(evt);
 }
