@@ -5,7 +5,6 @@ const forms = Array.from(document.querySelectorAll('.form'));
 export function openPopup(evt) {
     evt.currentTarget.formOpen.classList.add('form_opened');
     document.addEventListener('keydown', closeEscape);
-    //const forms = Array.from(document.querySelectorAll('.form'));
     forms.forEach((overlayElement) => {
         overlayElement.addEventListener('click', closeOverlay);
     })
@@ -23,7 +22,6 @@ function closeOverlay(evt) {
 }
 export function closePopup(evt) {
     document.removeEventListener('keydown', closeEscape);
-    //const forms = Array.from(document.querySelectorAll('.form'));
     forms.forEach((overlayElement) => {
         overlayElement.removeEventListener('click', closeOverlay);
     })
@@ -31,7 +29,6 @@ export function closePopup(evt) {
 }
 function closeEscape(evt) {
     if (evt.key === 'Escape') {
-        //--//
         const openedPopup = document.querySelector('.form_opened');
         closePopup(openedPopup);
     };
