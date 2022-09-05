@@ -1,0 +1,19 @@
+.profile__avatar-change {
+    position: relative;
+}
+.profile__avatar-change::before  {
+    content: "";
+    background-image: url(../../../images/Pensel.svg);
+    opacity: .8;
+    background-color: #000;
+    background-position: 50%;
+    background-repeat: no-repeat;
+    display: none;
+    height: 100%;
+    position: absolute;
+    width: 100%;
+    cursor: pointer;
+}
+.profile__avatar-change:hover::before {
+    display: block;
+}

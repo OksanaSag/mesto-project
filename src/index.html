@@ -13,11 +13,13 @@
     <main>
       <section class="profile">
         <div class="profile__container">
-          <img
-            class="profile__avatar"
-            src="<%=require('./images/avatar.jpg')%>"
-            alt="Изображение"
-          />
+          <div class="profile__avatar-change">
+            <img
+              class="profile__avatar"
+              src="#"
+              alt="Изображение"
+            />
+          </div>
           <div class="profile__profile-info">
             <div class="profile__entry-field">
               <h1 class="profile__name"></h1>
@@ -150,5 +152,17 @@
       </div>
     </div>
   
+    <div class="form" id="formOpenTrashCard">
+      <div class="form__popup form__popup_size-s">
+        <button class="form__toggle" id="formCloseTrash" type="button">
+          <img class="form__x" src="<%=require('./images/Close-Icon.svg')%>" alt="Закрыть" />
+        </button>
+        <form class="form__position" name="blank" action="#">
+          <h2 class="form__header">Вы уверены?</h2>
+         
+          <button class="form__button" type="button" id="trashButtonVerification">Да</button>
+        </form>
+      </div>
+    </div>
   </body>
 </html>
