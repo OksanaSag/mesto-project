@@ -1,5 +1,5 @@
 import {openPicture} from './modal.js';
-import {template, likeCount, currentUser, deledeLike} from './index.js';
+import {template, likeCount, currentUser, deledeLike, deleteCard} from './index.js';
 
 export function createCard(element){
     const clone = template.content.cloneNode(true);
@@ -8,11 +8,13 @@ export function createCard(element){
     const likeButton = clone.querySelector('.elements__button');
     const trashButton = clone.querySelector('.elements__trash');
     const likeCounter = clone.querySelector('.elements__like-counter');
+
+    if(element.owner._id !== currentUser){
+        trashButton.setAttribute('style', 'display:none');
+    }
     let count = 0;
     if (element.likes != undefined) count = element.likes.length;
     element.likes.forEach((function (element) {
-        //console.log(element._id)
-        //likeButton.classList.add('elements__button_active');
         if(currentUser!=null)
         {
             if(element._id == currentUser){
@@ -23,16 +25,27 @@ export function createCard(element){
     }))
     likeCounter.textContent = count;
     function clickLike(element) {
-        likeCounter.innerHTML = count+=1;
         likeButton.classList.toggle('elements__button_active');
         myFunction(element)
      }
+     function myFunction(element) {
+        let cardId = element.currentTarget.getAttribute('internal_id');
+       if(likeButton.classList.contains('elements__button_active')){
+        likeCount(cardId);
+        likeCounter.innerHTML = count+=1;
+    } else {
+        deledeLike(cardId);
+        likeCounter.innerHTML = count-=1;
+    }
+       
+       
+    }
         likeButton.addEventListener('click', clickLike);
         likeButton.setAttribute('internal_id',element._id);
-        //likeButton.setAttribute('like_id', element.likes[id]);
         trashButton.addEventListener('click', function () {
             const listItem = trashButton.closest('.elements__foto');
             listItem.remove();
+            deleteCard(element._id)
         });
     elementImage.addEventListener('click', openPicture);
     elementImage.formOpen = document.querySelector('#bigPicture'); 
@@ -44,18 +57,7 @@ export function createCard(element){
     return clone;
 }
 
-function myFunction(element) {
-    let cardId = element.currentTarget.getAttribute('internal_id');
-    //let likeId = element.currentTarget.getAttribute('like_id');
-    //if (cardId == '275b4bfec021cd779eb36c71') {
-       // console.log('hi')
-       // document.querySelector('.elements__button').classList.add('elements__button_active');
-   // }
-    //console.log(likeId);
-   // likeCounter.innerHTML = count+=1;
-   likeCount(cardId);
-   
-}
+
 
 
 export function insertToContainer(cardElement, isPretend = false) {

@@ -81,7 +81,7 @@
         .then((res) => {
           console.log(res)
           res.forEach((function (element) {
-            
+            //console.log(element._id)
             console.log(element.likes.length);
             //console.log(element.likes[0]._id),
             insertToContainer(createCard(element));
@@ -153,6 +153,7 @@
         //console.log(res)
 })
    }
+  let likesLength;
 export const likeCount = (cardId) => {
       fetch('https://nomoreparties.co/v1/plus-cohort-14//cards/likes/' + cardId, {
         method: 'PUT',
@@ -164,8 +165,14 @@ export const likeCount = (cardId) => {
             _id: cardId
         })
 }) 
+.then(res => res.json())
+        .then((res) => {
+            likesLength = res.likes
+            
+      }); 
+      
 }
-
+console.log(likesLength)
 export const deledeLike = (cardId) => {
     fetch('https://nomoreparties.co/v1/plus-cohort-14//cards/likes/'  + cardId, {
        method: 'DELETE',
@@ -178,6 +185,17 @@ export const deledeLike = (cardId) => {
        })
 })
 }
-
+export const deleteCard = (cardTrash) => {
+    fetch('https://nomoreparties.co/v1/plus-cohort-14/cards/'  + cardTrash, {
+       method: 'DELETE',
+       headers: {
+           authorization: '2b115875-5f8a-40be-8d8a-4a3dc9ce97a5',
+           'Content-Type': 'application/json'
+       },
+       body: JSON.stringify({
+           _id: cardTrash
+       })
+})
+}
 
  
