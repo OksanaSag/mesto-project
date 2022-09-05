@@ -1,4 +1,4 @@
-export const initialCards = [
+/*export const initialCards = [
     {
       name: 'Архыз',
       link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
@@ -24,3 +24,12 @@ export const initialCards = [
       link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
     }
 ];
+*/
+
+const elementsImage = document.querySelector('.elements__image'); 
+    const elementsCaption = document.querySelector('.elements__caption'); 
+//const initialCard = () => {
+
+          
+
+       // }
