@@ -16,7 +16,7 @@
     const bigPictureClose = document.querySelector('#formCloseBigPicture');
     profileEditPopup.formOpen = document.querySelector('#formOpen'); 
     avatarChange.formOpen = document.querySelector('#formOpenAvatar'); 
-    
+    const profileNameChange = document.querySelector('#profileNameChange'); 
     newPictureButton.formOpen = document.querySelector('#formOpenPicture'); 
     formCloseAvatar.formClose = document.querySelector('#formOpenAvatar'); 
     profileCloseButton.formClose = document.querySelector('#formOpen'); 
@@ -54,7 +54,8 @@
         activeButtonClass: 'form__button_active',
         inputErrorClass: 'form__line_type_error',
         errorClass: 'form__line-error_active',
-        formButtonAvatar: 'formButtonAvatar'
+        formButtonAvatar: 'formButtonAvatar',
+        profileNameChange: 'profileNameChange'
     }; 
 
     function addPicture(evt) {
@@ -134,6 +135,7 @@ function changeAvatar (evt){
         profileName.textContent = nameInput.value;
         profileDescription.textContent = jobInput.value;
         userNameAbout(nameInput.value,jobInput.value);
+        disableButton(enable, profileNameChange);
         closePopup(evt);
     }
     export const userNameAbout = (userName, userAbout) => {
