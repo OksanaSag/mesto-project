@@ -152,6 +152,35 @@
       </div>
     </div>
   
+    <div class="form" id="formOpenAvatar">
+      <div class="form__popup form__popup_size-s">
+        <button class="form__toggle" id="formCloseAvatar" type="button">
+          <img class="form__x" src="<%=require('./images/Close-Icon.svg')%>" alt="Закрыть" />
+        </button>
+        <form
+          class="form__position"
+          name="blank-picture"
+          action="#"
+          id="avatarPicture"
+          novalidate
+        >
+          <h2 class="form__header">Обновить аватар</h2>
+          <fieldset class="form__input">
+            <input
+              class="form__line form__line_box_description"
+              name="box-description"
+              type="url"
+              placeholder="Ссылка на картинку"
+              id="url-avatar"
+              required
+            />
+            <span class="form__input-error url-avatar-error"></span>
+          </fieldset>
+          <button class="form__button" type="submit">Сохранить</button>
+        </form>
+      </div>
+    </div>
+    
     <div class="form" id="formOpenTrashCard">
       <div class="form__popup form__popup_size-s">
         <button class="form__toggle" id="formCloseTrash" type="button">

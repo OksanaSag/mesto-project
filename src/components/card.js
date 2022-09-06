@@ -1,4 +1,4 @@
-import {openPicture} from './modal.js';
+import {openPicture, openPopup, closePopup} from './modal.js';
 import {template, likeCount, currentUser, deledeLike, deleteCard} from './index.js';
 
 export function createCard(element){
@@ -8,7 +8,6 @@ export function createCard(element){
     const likeButton = clone.querySelector('.elements__button');
     const trashButton = clone.querySelector('.elements__trash');
     const likeCounter = clone.querySelector('.elements__like-counter');
-
     if(element.owner._id !== currentUser){
         trashButton.setAttribute('style', 'display:none');
     }
@@ -42,11 +41,23 @@ export function createCard(element){
     }
         likeButton.addEventListener('click', clickLike);
         likeButton.setAttribute('internal_id',element._id);
-        trashButton.addEventListener('click', function () {
+        trashButton.formOpen = document.querySelector('#formOpenTrashCard'); 
+        trashButtonVerification.formClose = document.querySelector('#formOpenTrashCard'); 
+        trashButton.addEventListener('click', function (evt) {
             const listItem = trashButton.closest('.elements__foto');
-            listItem.remove();
-            deleteCard(element._id)
+            openPopup(evt)
+            trashButtonVerification.addEventListener('click', function (evt) {
+                listItem.remove();
+                closePopup(evt);
+                deleteCard(element._id);
+                
+                
+        
+            })
         });
+       
+
+
     elementImage.addEventListener('click', openPicture);
     elementImage.formOpen = document.querySelector('#bigPicture'); 
     elelementsCaption.textContent = element.name;

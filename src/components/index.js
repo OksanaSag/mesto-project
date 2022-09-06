@@ -35,7 +35,6 @@
     export let currentUser;
     
     
-    
 
     const enable = {
         formSelector: '.form',
@@ -82,7 +81,7 @@
           console.log(res)
           res.forEach((function (element) {
             //console.log(element._id)
-            console.log(element.likes.length);
+            //console.log(element.likes.length);
             //console.log(element.likes[0]._id),
             insertToContainer(createCard(element));
         }));
@@ -99,16 +98,16 @@
     })
     .then(res => res.json())
         .then((res) => {
-            console.log(res)
+            //console.log(res)
             profileAvatar.src = res.avatar;
             profileName.textContent = res.name;
             profileDescription.textContent = res.about;
             nameInput.value = res.name;
             jobInput.value = res.about;
             currentUser = res._id;
-
+            console.log(currentUser);
       }); 
-
+      
       function editProfile(evt) {
         evt.preventDefault(); 
         profileName.textContent = nameInput.value;
@@ -128,11 +127,12 @@
             about: userAbout
         })
     })
+    /*
     .then(res => res.json())
     .then((res) => {
        //currentUser = res._id;
    
-    })
+    })*/
 }
 
    const userFoto = (fotoName, fotoLink) => {
