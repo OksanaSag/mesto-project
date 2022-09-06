@@ -6,13 +6,19 @@
     
     const profileEditPopup = document.querySelector('.profile__edit-button');
     const newPictureButton = document.querySelector('.profile__add-picture');
+    const avatarChange = document.querySelector('.profile__avatar-change');
     const profileCloseButton = document.querySelector('#formClose');
+    const formCloseAvatar = document.querySelector('#formCloseAvatar');
     const newPictureCloseButton = document.querySelector('#formClosePicture');
     const formEditProfile = document.querySelector('#profileName');
     const newPictureForm = document.querySelector('#profilePicture');
+    const avatarPicture = document.querySelector('#avatarPicture');
     const bigPictureClose = document.querySelector('#formCloseBigPicture');
     profileEditPopup.formOpen = document.querySelector('#formOpen'); 
+    avatarChange.formOpen = document.querySelector('#formOpenAvatar'); 
+    
     newPictureButton.formOpen = document.querySelector('#formOpenPicture'); 
+    formCloseAvatar.formClose = document.querySelector('#formOpenAvatar'); 
     profileCloseButton.formClose = document.querySelector('#formOpen'); 
     newPictureCloseButton.formClose = document.querySelector('#formOpenPicture'); 
     formEditProfile.formClose = document.querySelector('#formOpen'); 
@@ -20,11 +26,14 @@
     bigPictureClose.formClose = document.querySelector('#bigPicture'); 
     const namePicture = document.getElementById('title-input');
     const linkPicture = document.getElementById('url-input');
+    const linkAvatar = document.getElementById('url-avatar');
     const nameInput = document.querySelector('.form__line_box_name');
     const jobInput = document.querySelector('.form__line_box_description');
     const profileName = document.querySelector('.profile__name');
     const profileDescription = document.querySelector('.profile__description'); 
     const profileAvatar = document.querySelector('.profile__avatar'); 
+    const formButtonAvatar = document.querySelector('#formButtonAvatar'); //
+    formButtonAvatar.formClose = document.querySelector('#formOpenAvatar'); //
     const elementsImage = document.querySelector('.elements__image'); 
     const elementsCaption = document.querySelector('.elements__caption'); 
     export const template = document.querySelector('#elementsList');
@@ -44,7 +53,8 @@
         inactiveButtonClass: 'form__button_inactive',
         activeButtonClass: 'form__button_active',
         inputErrorClass: 'form__line_type_error',
-        errorClass: 'form__line-error_active'
+        errorClass: 'form__line-error_active',
+        formButtonAvatar: 'formButtonAvatar'
     }; 
 
     function addPicture(evt) {
@@ -62,11 +72,25 @@
 
     profileEditPopup.addEventListener('click', openPopup);
     newPictureButton.addEventListener('click', openPopup);
-    profileCloseButton.addEventListener('click', closePopup);
+    avatarChange.addEventListener('click', openPopup);
     newPictureCloseButton.addEventListener('click', closePopup);
     bigPictureClose.addEventListener('click', closePopup);
+    formCloseAvatar.addEventListener('click', closePopup);
+    formButtonAvatar.addEventListener('click', closePopup);
     formEditProfile.addEventListener('submit', editProfile);
     newPictureForm.addEventListener('submit', addPicture);  
+    avatarPicture.addEventListener('submit', changeAvatar);//
+
+
+function changeAvatar (evt){
+    evt.preventDefault();
+    profileAvatar.src = linkAvatar.value;
+    userAvatar(linkAvatar.value);
+    linkAvatar.value = '';
+    disableButton(enable, formButtonAvatar);
+}
+
+
 
     enableValidation(enable); 
     
@@ -80,9 +104,6 @@
         .then((res) => {
           console.log(res)
           res.forEach((function (element) {
-            //console.log(element._id)
-            //console.log(element.likes.length);
-            //console.log(element.likes[0]._id),
             insertToContainer(createCard(element));
         }));
       }); 
@@ -105,7 +126,7 @@
             nameInput.value = res.name;
             jobInput.value = res.about;
             currentUser = res._id;
-            console.log(currentUser);
+            console.log(res.avatar);
       }); 
       
       function editProfile(evt) {
@@ -198,4 +219,21 @@ export const deleteCard = (cardTrash) => {
 })
 }
 
- 
+export const userAvatar = (avatar) => {
+    fetch('https://nomoreparties.co/v1/plus-cohort-14/users/me/avatar', {
+        method: 'PATCH',
+        headers: {
+            authorization: '2b115875-5f8a-40be-8d8a-4a3dc9ce97a5',
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            avatar: avatar
+        })
+    })
+    .then(res => res.json())
+        .then((res) => {
+            avatar = res.avatar
+            
+      }); 
+}
+
