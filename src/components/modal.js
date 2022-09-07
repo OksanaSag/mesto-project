@@ -1,4 +1,4 @@
-import {popupBigPicture, pictureCaption, formImage} from './index.js';
+import {pictureCaption, formImage} from './index.js';
 
 
 const forms = Array.from(document.querySelectorAll('.form'));

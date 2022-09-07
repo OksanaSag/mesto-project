@@ -1,5 +1,7 @@
 import {openPicture, openPopup, closePopup} from './modal.js';
-import {template, likeCount, currentUser, deledeLike, deleteCard} from './index.js';
+import {template} from './index.js';
+import {likeCount, deledeLike, deleteCard, currentUser} from './api.js';
+
 
 export function createCard(element){
     const clone = template.content.cloneNode(true);
@@ -44,18 +46,18 @@ export function createCard(element){
         trashButton.formOpen = document.querySelector('#formOpenTrashCard'); 
         trashButtonVerification.formClose = document.querySelector('#formOpenTrashCard'); 
         trashButton.addEventListener('click', function (evt) {
-            const listItem = trashButton.closest('.elements__foto');
+            const elId = element._id;
+            console.log(elId);
             openPopup(evt)
-            trashButtonVerification.addEventListener('click', function (evt) {
+            //trashButtonVerification.addEventListener('click', function (evt) {
+                const listItem = trashButton.closest('.elements__foto');
                 listItem.remove();
                 closePopup(evt);
                 deleteCard(element._id);
-                
-                
-        
-            })
+                //trashButton.removeEventListener('click', evt);
+            //})
         });
-       
+        
 
 
     elementImage.addEventListener('click', openPicture);
