@@ -3,26 +3,24 @@ import {template} from './index.js';
 import {likeCount, deledeLike, deleteCard, currentUser} from './api.js';
 
 
-export function createCard(element){
+export function createCard(element) {
     const clone = template.content.cloneNode(true);
     const elelementsCaption = clone.querySelector('.elements__caption');
     const elementImage = clone.querySelector('.elements__image');
     const likeButton = clone.querySelector('.elements__button');
     const trashButton = clone.querySelector('.elements__trash');
     const likeCounter = clone.querySelector('.elements__like-counter');
+    let count = 0;
     if(element.owner._id !== currentUser){
         trashButton.setAttribute('style', 'display:none');
     }
-    let count = 0;
     if (element.likes != undefined) count = element.likes.length;
-    element.likes.forEach((function (element) {
-        if(currentUser!=null)
-        {
-            if(element._id == currentUser){
-                likeButton.classList.add('elements__button_active');
-            }
-        } 
-       
+        element.likes.forEach((function (element) {
+            if(currentUser!=null) {
+                if(element._id == currentUser){
+                    likeButton.classList.add('elements__button_active');
+                }
+            } 
     }))
     likeCounter.textContent = count;
     function clickLike(element) {
@@ -37,41 +35,26 @@ export function createCard(element){
     } else {
         deledeLike(cardId);
         likeCounter.innerHTML = count-=1;
-    }
-       
-       
+    } 
     }
         likeButton.addEventListener('click', clickLike);
         likeButton.setAttribute('internal_id',element._id);
         trashButton.formOpen = document.querySelector('#formOpenTrashCard'); 
-        trashButtonVerification.formClose = document.querySelector('#formOpenTrashCard'); 
         trashButton.addEventListener('click', function (evt) {
-            const elId = element._id;
-            console.log(elId);
             openPopup(evt)
-            //trashButtonVerification.addEventListener('click', function (evt) {
                 const listItem = trashButton.closest('.elements__foto');
                 listItem.remove();
                 closePopup(evt);
                 deleteCard(element._id);
-                //trashButton.removeEventListener('click', evt);
-            //})
         });
         
-
-
     elementImage.addEventListener('click', openPicture);
     elementImage.formOpen = document.querySelector('#bigPicture'); 
     elelementsCaption.textContent = element.name;
     elementImage.src = element.link;
     elementImage.alt = element.name;
-   
-   
     return clone;
 }
-
-
-
 
 export function insertToContainer(cardElement, isPretend = false) {
     if(isPretend)

@@ -26,8 +26,8 @@
 ];
 */
 
-const elementsImage = document.querySelector('.elements__image'); 
-    const elementsCaption = document.querySelector('.elements__caption'); 
+//const elementsImage = document.querySelector('.elements__image'); 
+   // const elementsCaption = document.querySelector('.elements__caption'); 
 //const initialCard = () => {
 
           
