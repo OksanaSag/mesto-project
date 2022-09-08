@@ -35,7 +35,7 @@ export  function renderLoadingremove(evt) {
     })
 }*/
     
-export const enable = {
+export const validationConfig = {
     formSelector: '.form',
     formPopup: '.form__position',
     inputSelector: '.form__line',

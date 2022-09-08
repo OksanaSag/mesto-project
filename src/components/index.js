@@ -2,7 +2,7 @@
     import {userFoto, userAvatar, userNameAbout} from './api.js';
     import {enableValidation} from './validate.js';
     import {openPopup, closePopup} from './modal.js';
-    import {nameInput, profileAvatar, profileDescription, profileName, jobInput, enable} from './utils/utils.js';
+    import {nameInput, profileAvatar, profileDescription, profileName, jobInput, validationConfig} from './utils/utils.js';
     
     const profileEditPopup = document.querySelector('.profile__edit-button');
     const newPictureButton = document.querySelector('.profile__add-picture');//
@@ -85,4 +85,4 @@
     profileNameChange.addEventListener('click', renderLoading)
     newCardButton.addEventListener('click', renderLoading)
     formButtonAvatar.addEventListener('click', renderLoading)
-    enableValidation(enable); 
+    enableValidation(validationConfig); 

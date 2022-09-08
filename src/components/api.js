@@ -1,7 +1,7 @@
 import {createCard, insertToContainer} from './card.js';
 import {buttonSubmit} from './index.js';
 import {closePopup} from './modal.js';
-import {nameInput, jobInput, profileName, profileAvatar, profileDescription, enable, renderLoadingremove, formButtonAvatar, profileNameChange, newCardButton} from './utils/utils.js';
+import {nameInput, jobInput, profileName, profileAvatar, profileDescription, validationConfig, renderLoadingremove, formButtonAvatar, profileNameChange, newCardButton} from './utils/utils.js';
 import {disableButton} from './validate.js';
 export let currentUser;
 
@@ -70,7 +70,7 @@ export let currentUser;
             return Promise.reject(`Ошибка: ${res.status}`);
         })
         .then((res) => {
-            disableButton(enable, profileNameChange);
+            disableButton(validationConfig, profileNameChange);
             closePopup();
             renderLoadingremove(profileNameChange);
         })
@@ -99,7 +99,7 @@ export let currentUser;
             
         })
         .then((res) => {
-            disableButton(enable, newCardButton);
+            disableButton(validationConfig, newCardButton);
             closePopup();
             renderLoadingremove(newCardButton);
             insertToContainer(createCard(res),true);
@@ -200,7 +200,7 @@ export let currentUser;
         })
         .then((res) => {
             avatar = res.avatar;
-            disableButton(enable, formButtonAvatar);
+            disableButton(validationConfig, formButtonAvatar);
             closePopup();
             renderLoadingremove(formButtonAvatar);
                 
