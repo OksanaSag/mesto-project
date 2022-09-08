@@ -31,10 +31,10 @@ export function createCard(element) {
         let cardId = element.currentTarget.getAttribute('internal_id');
        if(likeButton.classList.contains('elements__button_active')){
         likeCount(cardId);
-        likeCounter.innerHTML = count+=1;
+        likeCounter.textContent = count+=1;
     } else {
         deledeLike(cardId);
-        likeCounter.innerHTML = count-=1;
+        likeCounter.textContent = count-=1;
     } 
     }
         likeButton.addEventListener('click', clickLike);
