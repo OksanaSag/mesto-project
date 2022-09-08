@@ -25,9 +25,9 @@ export function createCard(element) {
     likeCounter.textContent = count;
     function clickLike(element) {
         likeButton.classList.toggle('elements__button_active');
-        myFunction(element)
+        countLike(element)
      }
-     function myFunction(element) {
+     function countLike(element) {
         let cardId = element.currentTarget.getAttribute('internal_id');
        if(likeButton.classList.contains('elements__button_active')){
         likeCount(cardId);
