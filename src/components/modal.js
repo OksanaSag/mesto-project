@@ -1,4 +1,4 @@
-import {pictureCaption, formImage} from './index.js';
+import {pictureCaption, formImage} from './utils/utils.js';
 
 
 const forms = Array.from(document.querySelectorAll('.form'));

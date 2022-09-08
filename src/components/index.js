@@ -1,10 +1,11 @@
-    /*import '../pages/index.css';
+    import '../pages/index.css';
     import {userFoto, userAvatar, userNameAbout} from './api.js';
     import {enableValidation} from './validate.js';
     import {openPopup, closePopup} from './modal.js';
+    import {nameInput, profileAvatar, profileDescription, profileName, jobInput, enable} from './utils/utils.js';
     
     const profileEditPopup = document.querySelector('.profile__edit-button');
-    const newPictureButton = document.querySelector('.profile__add-picture');
+    const newPictureButton = document.querySelector('.profile__add-picture');//
     const avatarChange = document.querySelector('.profile__avatar-change');
     const profileCloseButton = document.querySelector('#formClose');
     const formCloseAvatar = document.querySelector('#formCloseAvatar');
@@ -29,43 +30,27 @@
     const linkAvatar = document.getElementById('url-avatar');
     const formButtonAvatar = document.querySelector('#formButtonAvatar');
     formButtonAvatar.formClose = document.querySelector('#formOpenAvatar');
-    export const nameInput = document.querySelector('.form__line_box_name');
-    export const jobInput = document.querySelector('.form__line_box_description');
-    export const profileName = document.querySelector('.profile__name');
-    export const profileDescription = document.querySelector('.profile__description'); 
-    export const profileAvatar = document.querySelector('.profile__avatar'); 
-    export const template = document.querySelector('#elementsList');
-    export const popupBigPicture = document.querySelector('#bigPicture');
-    export const pictureCaption = popupBigPicture.querySelector('.form__caption');
-    export const formImage = popupBigPicture.querySelector('.form__image');
+    //export const nameInput = document.querySelector('.form__line_box_name');
+    //export const jobInput = document.querySelector('.form__line_box_description');
+    //export const profileName = document.querySelector('.profile__name');
+    //export const profileDescription = document.querySelector('.profile__description'); 
+    //export const profileAvatar = document.querySelector('.profile__avatar'); 
+    //export const template = document.querySelector('#elementsList');
+    //export const popupBigPicture = document.querySelector('#bigPicture');
+    //export const pictureCaption = popupBigPicture.querySelector('.form__caption');
+    //export const formImage = popupBigPicture.querySelector('.form__image');
     export const buttonSubmit = newPictureButton.formOpen.querySelector('.form__button');
-    export let currentUser;
+    //export let currentUser;
     
-    export const enable = {
-        formSelector: '.form',
-        formPopup: '.form__position',
-        inputSelector: '.form__line',
-        submitButtonSelector: '.form__button',
-        inactiveButtonClass: 'form__button_inactive',
-        activeButtonClass: 'form__button_active',
-        inputErrorClass: 'form__line_type_error',
-        errorClass: 'form__line-error_active',
-        formButtonAvatar: 'formButtonAvatar',
-        profileNameChange: 'profileNameChange'
-    }; 
+    
 
 
-    export  function renderLoadingremove(evt) {
-        const closeButton = Array.from(document.querySelectorAll('.form__button'));
-        closeButton.forEach((evt) => {
-            evt.innerText = 'Сохранить';
-        })
-    }*/
+   
 
     function renderLoading(evt) {
         evt.target.innerText = 'Сохранение...';
     }
-    export function addPicture(evt) {
+    function addPicture(evt) {
         evt.preventDefault();
         const element  = {name:namePicture.value, link:linkPicture.value };
         userFoto(namePicture.value, linkPicture.value);

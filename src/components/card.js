@@ -1,5 +1,5 @@
 import {openPicture, openPopup, closePopup} from './modal.js';
-import {template} from './index.js';
+import {template} from './utils/utils.js';
 import {likeCount, deledeLike, deleteCard, currentUser} from './api.js';
 
 

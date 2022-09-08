@@ -1,6 +1,7 @@
 import {createCard, insertToContainer} from './card.js';
-import {profileAvatar, profileDescription, nameInput, jobInput, profileName, enable, buttonSubmit, renderLoadingremove} from '.utils/utils.js';
+import {buttonSubmit} from './index.js';
 import {closePopup} from './modal.js';
+import {nameInput, jobInput, profileName, profileAvatar, profileDescription, enable, renderLoadingremove} from './utils/utils.js';
 import {disableButton} from './validate.js';
 export let currentUser;
 
