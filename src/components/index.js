@@ -1,4 +1,4 @@
-    import '../pages/index.css';
+    /*import '../pages/index.css';
     import {userFoto, userAvatar, userNameAbout} from './api.js';
     import {enableValidation} from './validate.js';
     import {openPopup, closePopup} from './modal.js';
@@ -27,13 +27,13 @@
     const namePicture = document.getElementById('title-input');
     const linkPicture = document.getElementById('url-input');
     const linkAvatar = document.getElementById('url-avatar');
+    const formButtonAvatar = document.querySelector('#formButtonAvatar');
+    formButtonAvatar.formClose = document.querySelector('#formOpenAvatar');
     export const nameInput = document.querySelector('.form__line_box_name');
     export const jobInput = document.querySelector('.form__line_box_description');
     export const profileName = document.querySelector('.profile__name');
     export const profileDescription = document.querySelector('.profile__description'); 
     export const profileAvatar = document.querySelector('.profile__avatar'); 
-    const formButtonAvatar = document.querySelector('#formButtonAvatar');
-    formButtonAvatar.formClose = document.querySelector('#formOpenAvatar');
     export const template = document.querySelector('#elementsList');
     export const popupBigPicture = document.querySelector('#bigPicture');
     export const pictureCaption = popupBigPicture.querySelector('.form__caption');
@@ -54,17 +54,17 @@
         profileNameChange: 'profileNameChange'
     }; 
 
-    function renderLoading(evt) {
-        evt.target.innerText = 'Сохранение...';
-    }
 
     export  function renderLoadingremove(evt) {
         const closeButton = Array.from(document.querySelectorAll('.form__button'));
         closeButton.forEach((evt) => {
             evt.innerText = 'Сохранить';
         })
-    }
+    }*/
 
+    function renderLoading(evt) {
+        evt.target.innerText = 'Сохранение...';
+    }
     export function addPicture(evt) {
         evt.preventDefault();
         const element  = {name:namePicture.value, link:linkPicture.value };
