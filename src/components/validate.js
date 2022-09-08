@@ -54,15 +54,15 @@ const setEventListeners = (formElement, enable) => {
         });
     });
 };
-export const enableValidation = (enable) => {
-    const formList = Array.from(document.querySelectorAll(enable.formSelector));
+export const enableValidation = (validationConfig) => {
+    const formList = Array.from(document.querySelectorAll(validationConfig.formSelector));
     formList.forEach((formElement) => {
         formElement.addEventListener('submit', (evt) => {
             evt.preventDefault();
         });
-        const fieldsetList = Array.from(formElement.querySelectorAll(enable.formPopup));
+        const fieldsetList = Array.from(formElement.querySelectorAll(validationConfig.formPopup));
         fieldsetList.forEach((fieldSet) => {
-            setEventListeners(fieldSet, enable);
+            setEventListeners(fieldSet, validationConfig);
         });
     });
 };

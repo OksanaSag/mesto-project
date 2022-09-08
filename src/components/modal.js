@@ -11,7 +11,7 @@ export function openPopup(evt) {
 }
 function closeOverlay(evt) {
     const formOpened = document.querySelector('.form_opened');
-    if(formOpened == null) {
+    if(formOpened === null) {
         return;
     }
     const formArea = formOpened.querySelector('.form__popup');
