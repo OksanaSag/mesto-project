@@ -9,6 +9,9 @@ export const formImage = popupBigPicture.querySelector('.form__image');
 export const newPictureButton = document.querySelector('.profile__add-picture');
 export const buttonSubmit = newPictureButton.querySelector('.form__button'); 
 export const template = document.querySelector('#elementsList');
+export const newCardButton = document.querySelector('#newCardButton');
+export const profileNameChange = document.querySelector('#profileNameChange');
+export const formButtonAvatar = document.querySelector('#formButtonAvatar');
 /*export const popupBigPicture = document.querySelector('#bigPicture');
 export const pictureCaption = popupBigPicture.querySelector('.form__caption');
 export const formImage = popupBigPicture.querySelector('.form__image');
@@ -45,8 +48,6 @@ export const enable = {
     profileNameChange: 'profileNameChange'
 }; 
 export  function renderLoadingremove(evt) {
-    const closeButton = Array.from(document.querySelectorAll('.form__button'));
-    closeButton.forEach((evt) => {
         evt.innerText = 'Сохранить';
-    })
-}
+    }
+

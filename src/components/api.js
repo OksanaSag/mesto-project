@@ -1,7 +1,7 @@
 import {createCard, insertToContainer} from './card.js';
 import {buttonSubmit} from './index.js';
 import {closePopup} from './modal.js';
-import {nameInput, jobInput, profileName, profileAvatar, profileDescription, enable, renderLoadingremove} from './utils/utils.js';
+import {nameInput, jobInput, profileName, profileAvatar, profileDescription, enable, renderLoadingremove, formButtonAvatar, profileNameChange, newCardButton} from './utils/utils.js';
 import {disableButton} from './validate.js';
 export let currentUser;
 
@@ -70,9 +70,9 @@ export let currentUser;
             return Promise.reject(`Ошибка: ${res.status}`);
         })
         .then((res) => {
-            disableButton(enable, buttonSubmit);
+            disableButton(enable, profileNameChange);
             closePopup();
-            renderLoadingremove();
+            renderLoadingremove(profileNameChange);
         })
         .catch((err) => {
             console.log(err); 
@@ -99,9 +99,9 @@ export let currentUser;
             
         })
         .then((res) => {
-            disableButton(enable, buttonSubmit);
+            disableButton(enable, newCardButton);
             closePopup();
-            renderLoadingremove();
+            renderLoadingremove(newCardButton);
             insertToContainer(createCard(res),true);
         })
         .catch((err) => {
@@ -200,9 +200,9 @@ export let currentUser;
         })
         .then((res) => {
             avatar = res.avatar;
-            disableButton(enable, buttonSubmit);
+            disableButton(enable, formButtonAvatar);
             closePopup();
-            renderLoadingremove();
+            renderLoadingremove(formButtonAvatar);
                 
         })
         .catch((err) => {
