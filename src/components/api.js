@@ -1,5 +1,5 @@
-import {createCard, insertToContainer} from './card.js';
-import {buttonSubmit} from './index.js';
+import {createCard} from './card.js';
+import {insertToContainer} from './index.js';
 import {closePopup} from './modal.js';
 import {nameInput, jobInput, profileName, profileAvatar, profileDescription, validationConfig, renderLoadingremove, formButtonAvatar, profileNameChange, newCardButton} from './utils/utils.js';
 import {disableButton} from './validate.js';

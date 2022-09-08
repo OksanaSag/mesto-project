@@ -2,7 +2,7 @@
     import {userFoto, userAvatar, userNameAbout} from './api.js';
     import {enableValidation} from './validate.js';
     import {openPopup, closePopup} from './modal.js';
-    import {nameInput, profileAvatar, profileDescription, profileName, jobInput, validationConfig} from './utils/utils.js';
+    import {nameInput, profileAvatar, profileDescription, profileName, jobInput, validationConfig, template} from './utils/utils.js';
     
     const profileEditPopup = document.querySelector('.profile__edit-button');
     const newPictureButton = document.querySelector('.profile__add-picture');//
@@ -70,6 +70,13 @@
         profileName.textContent = nameInput.value;
         profileDescription.textContent = jobInput.value;
         userNameAbout(nameInput.value,jobInput.value);
+    }
+
+    export function insertToContainer(cardElement, isPretend = false) {
+        if(isPretend)
+            template.parentNode.prepend(cardElement);
+        else
+            template.parentNode.append(cardElement);
     }
 
     profileEditPopup.addEventListener('click', openPopup);

@@ -56,12 +56,7 @@ export function createCard(element) {
     return clone;
 }
 
-export function insertToContainer(cardElement, isPretend = false) {
-    if(isPretend)
-        template.parentNode.prepend(cardElement);
-    else
-        template.parentNode.append(cardElement);
-}
+
 
 
 
