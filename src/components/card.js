@@ -2,15 +2,15 @@ import {openPicture, openPopup, closePopup} from './modal.js';
 import {template} from './utils/utils.js';
 import {likeCount, deledeLike, deleteCard, currentUser} from './api.js';
 
-
-export function createCard(element) {
+let count = 0;
+export function createCard (element) {
     const clone = template.content.cloneNode(true);
     const elelementsCaption = clone.querySelector('.elements__caption');
     const elementImage = clone.querySelector('.elements__image');
     const likeButton = clone.querySelector('.elements__button');
     const trashButton = clone.querySelector('.elements__trash');
     const likeCounter = clone.querySelector('.elements__like-counter');
-    let count = 0;
+   
     if(element.owner._id !== currentUser){
         trashButton.setAttribute('style', 'display:none');
     }
@@ -23,20 +23,12 @@ export function createCard(element) {
             } 
     }))
     likeCounter.textContent = count;
+    /*
     function clickLike(element) {
         likeButton.classList.toggle('elements__button_active');
         countLike(element)
-     }
-     function countLike(element) {
-        let cardId = element.currentTarget.getAttribute('internal_id');
-       if(likeButton.classList.contains('elements__button_active')){
-        likeCount(cardId);
-        likeCounter.textContent = count+=1;
-    } else {
-        deledeLike(cardId);
-        likeCounter.textContent = count-=1;
-    } 
-    }
+     }*/
+
         likeButton.addEventListener('click', clickLike);
         likeButton.setAttribute('internal_id',element._id);
         trashButton.formOpen = document.querySelector('#formOpenTrashCard'); 
@@ -55,10 +47,22 @@ export function createCard(element) {
     elementImage.alt = element.name;
     return clone;
 }
+function clickLike(evt) {
+   evt.currentTarget.classList.toggle('elements__button_active');
+    countLike(evt);
+ }
 
+ function countLike(evt) {
+    let cardId = evt.currentTarget.getAttribute('internal_id');
+   if(evt.currentTarget.classList.contains('elements__button_active')){
+    likeCount(cardId);
 
-
-
+    evt.currentTarget.parentElement.querySelector('.elements__like-counter').textContent-=-1;
+} else {
+    deledeLike(cardId);
+    evt.currentTarget.parentElement.querySelector('.elements__like-counter').textContent-=+1;
+} 
+}
 
 
 
