@@ -1,7 +1,7 @@
 import {createCard} from './card.js';
-import {insertToContainer} from './index.js';
+import {insertToContainer, renderLoadingremove} from './index.js';
 import {closePopup} from './modal.js';
-import {nameInput, jobInput, profileName, profileAvatar, profileDescription, validationConfig, renderLoadingremove, formButtonAvatar, profileNameChange, newCardButton} from './utils/utils.js';
+import {nameInput, jobInput, profileName, profileAvatar, profileDescription, validationConfig, formButtonAvatar, profileNameChange, newCardButton} from './utils/utils.js';
 import {disableButton} from './validate.js';
 export let currentUser;
 
@@ -15,7 +15,7 @@ const checkResponse = (res) => {
     if (res.ok) {
       return res.json();
     }
-    return Promise.reject(new Error(`Error ${res.status}`));
+    return Promise.reject(`Ошибка: ${res.status}`);
   };
   export const getCards = () => {
     return fetch('https://nomoreparties.co/v1/plus-cohort-14/cards', {
@@ -65,7 +65,8 @@ const checkResponse = (res) => {
         .then((res) => {
             disableButton(validationConfig, profileNameChange);
             closePopup();
-            renderLoadingremove(profileNameChange);
+            profileNameChange.textContent = 'Сохранить';
+            //renderLoadingremove(profileNameChange);
         })
         .catch((err) => {
             console.log(err); 
@@ -85,7 +86,8 @@ const checkResponse = (res) => {
         .then((res) => {
             disableButton(validationConfig, newCardButton);
             closePopup();
-            renderLoadingremove(newCardButton);
+            //renderLoadingremove(newCardButton);
+            newCardButton.textContent = 'Сохранить';
             insertToContainer(createCard(res),true);
         })
         .catch((err) => {
@@ -154,7 +156,8 @@ const checkResponse = (res) => {
             avatar = res.avatar;
             disableButton(validationConfig, formButtonAvatar);
             closePopup();
-            renderLoadingremove(formButtonAvatar);
+            //renderLoadingremove(formButtonAvatar);
+            formButtonAvatar.textContent = 'Сохранить';
                 
         })
         .catch((err) => {

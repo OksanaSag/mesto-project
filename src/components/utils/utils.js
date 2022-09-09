@@ -46,8 +46,8 @@ export const validationConfig = {
     errorClass: 'form__line-error_active',
     formButtonAvatar: 'formButtonAvatar',
     profileNameChange: 'profileNameChange'
-}; 
+}; /*
 export  function renderLoadingremove(evt) {
         evt.innerText = 'Сохранить';
     }
-
+*/

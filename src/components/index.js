@@ -44,12 +44,14 @@
     
     
 
-
-   
+    //export function renderLoadingremove(evt) {
+    //    evt.innerText = 'Сохранить';
+    //}
 
     function renderLoading(evt) {
-        evt.target.innerText = 'Сохранение...';
+        evt.target.textContent = 'Сохранение...';
     }
+
     function addPicture(evt) {
         evt.preventDefault();
         const element  = {name:namePicture.value, link:linkPicture.value };

@@ -21,7 +21,7 @@ export function createCard (element) {
                     likeButton.classList.add('elements__button_active');
                 }
             } 
-    }))
+   }))
     likeCounter.textContent = count;
     /*
     function clickLike(element) {
