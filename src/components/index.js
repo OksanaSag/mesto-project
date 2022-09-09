@@ -48,9 +48,9 @@
     //    evt.innerText = 'Сохранить';
     //}
 
-    function renderLoading(evt) {
-        evt.target.textContent = 'Сохранение...';
-    }
+    //function renderLoading(evt) {
+      //  evt.target.textContent = 'Сохранение...';
+    //}
 
     function addPicture(evt) {
         evt.preventDefault();
@@ -91,7 +91,13 @@
     formEditProfile.addEventListener('submit', editProfile);
     newPictureForm.addEventListener('submit', addPicture);  
     avatarPicture.addEventListener('submit', changeAvatar);
-    profileNameChange.addEventListener('click', renderLoading)
-    newCardButton.addEventListener('click', renderLoading)
-    formButtonAvatar.addEventListener('click', renderLoading)
+    profileNameChange.addEventListener('click', evt => {
+        evt.target.textContent = 'Сохранение...';
+    })
+    newCardButton.addEventListener('click', evt => {
+        evt.target.textContent = 'Сохранение...';
+    })
+    formButtonAvatar.addEventListener('click', evt => {
+        evt.target.textContent = 'Сохранение...';
+    })
     enableValidation(validationConfig); 
