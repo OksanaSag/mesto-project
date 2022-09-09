@@ -48,20 +48,19 @@ export function createCard (element) {
     return clone;
 }
 function clickLike(evt) {
-   evt.currentTarget.classList.toggle('elements__button_active');
+    evt.currentTarget.classList.toggle('elements__button_active');
     countLike(evt);
  }
 
  function countLike(evt) {
     let cardId = evt.currentTarget.getAttribute('internal_id');
-   if(evt.currentTarget.classList.contains('elements__button_active')){
-    likeCount(cardId);
-
-    evt.currentTarget.parentElement.querySelector('.elements__like-counter').textContent-=-1;
-} else {
-    deledeLike(cardId);
-    evt.currentTarget.parentElement.querySelector('.elements__like-counter').textContent-=+1;
-} 
+    if(evt.currentTarget.classList.contains('elements__button_active')){
+        likeCount(cardId);
+        evt.currentTarget.parentElement.querySelector('.elements__like-counter').textContent-=-1;
+    } else {
+        deledeLike(cardId);
+        evt.currentTarget.parentElement.querySelector('.elements__like-counter').textContent-=+1;
+    } 
 }
 
 
