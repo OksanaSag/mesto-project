@@ -1,4 +1,4 @@
-import {openPicture, openPopup, closePopup} from './modal.js';
+import {openPicture} from './modal.js';
 import {template} from './utils/utils.js';
 import {likeCard, deleteLike, deleteCard, currentUser} from './api.js';
 

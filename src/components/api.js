@@ -5,17 +5,23 @@ import {nameInput, jobInput, profileName, profileAvatar, profileDescription, val
 import {disableButton} from './validate.js';
 export let currentUser;
 
-    fetch('https://nomoreparties.co/v1/plus-cohort-14/cards', {
-        headers: {
-          authorization: '2b115875-5f8a-40be-8d8a-4a3dc9ce97a5'
-        }
+const config = {
+headers: {
+    authorization: '2b115875-5f8a-40be-8d8a-4a3dc9ce97a5',
+    'Content-Type': 'application/json',
+},
+}
+const checkResponse = (res) => {
+    if (res.ok) {
+      return res.json();
+    }
+    return Promise.reject(new Error(`Error ${res.status}`));
+  };
+  export const getCards = () => {
+    return fetch('https://nomoreparties.co/v1/plus-cohort-14/cards', {
+        headers: config.headers,
     })
-        .then(res => {
-            if (res.ok) {
-            return res.json();
-        }
-        return Promise.reject(`Ошибка: ${res.status}`);
-        })
+        .then((res) => checkResponse(res))
         .then((res) => {
             console.log(res)
             res.forEach((function (element) {
@@ -25,18 +31,13 @@ export let currentUser;
         .catch((err) => {
             console.log(err); 
         }); 
-     
-    fetch('https://nomoreparties.co/v1/plus-cohort-14/users/me', {
-        headers: {
-            authorization: '2b115875-5f8a-40be-8d8a-4a3dc9ce97a5'
-        }
+    }
+    getCards()//
+    export const getUserMe = () => {
+        return fetch('https://nomoreparties.co/v1/plus-cohort-14/users/me', {
+        headers: config.headers,
     })
-        .then(res => {
-            if (res.ok) {
-            return res.json();
-            }
-            return Promise.reject(`Ошибка: ${res.status}`);
-        })
+        .then((res) => checkResponse(res))
         .then((res) => {
             profileAvatar.src = res.avatar;
             profileName.textContent = res.name;
@@ -49,26 +50,18 @@ export let currentUser;
         .catch((err) => {
             console.log(err); 
         }); 
-      
-    
+    }
+    getUserMe()//
     export const updateUserInfo = (userName, userAbout) => {
         fetch('https://nomoreparties.co/v1/plus-cohort-14/users/me', {
             method: 'PATCH',
-            headers: {
-                authorization: '2b115875-5f8a-40be-8d8a-4a3dc9ce97a5',
-                'Content-Type': 'application/json'
-            },
+            headers: config.headers,
             body: JSON.stringify({
                 name: userName,
                 about: userAbout
             })
         })
-        .then(res => {
-            if (res.ok) {
-            return res.json();
-            }
-            return Promise.reject(`Ошибка: ${res.status}`);
-        })
+        .then((res) => checkResponse(res))
         .then((res) => {
             disableButton(validationConfig, profileNameChange);
             closePopup();
@@ -82,22 +75,13 @@ export let currentUser;
     export  const addCard = (fotoName, fotoLink) => {
         fetch('https://nomoreparties.co/v1/plus-cohort-14/cards', {
             method: 'POST',
-            headers: {
-                authorization: '2b115875-5f8a-40be-8d8a-4a3dc9ce97a5',
-                'Content-Type': 'application/json'
-            },
+            headers: config.headers,
             body: JSON.stringify({
                 name: fotoName,
                 link: fotoLink
             })
         })
-        .then(res => {
-            if (res.ok) {
-            return res.json();
-            }
-            return Promise.reject(`Ошибка: ${res.status}`);
-            
-        })
+        .then((res) => checkResponse(res))
         .then((res) => {
             disableButton(validationConfig, newCardButton);
             closePopup();
@@ -114,20 +98,12 @@ export let currentUser;
     export const likeCard = (cardId) => {
         fetch('https://nomoreparties.co/v1/plus-cohort-14//cards/likes/' + cardId, {
             method: 'PUT',
-            headers: {
-                authorization: '2b115875-5f8a-40be-8d8a-4a3dc9ce97a5',
-                'Content-Type': 'application/json'
-            },
+            headers: config.headers,
             body: JSON.stringify({
                 _id: cardId
             })
         }) 
-        .then(res => {
-            if (res.ok) {
-            return res.json();
-            }
-            return Promise.reject(`Ошибка: ${res.status}`);
-        })
+        .then((res) => checkResponse(res))
         .then((res) => {
             //likesLength = res.likes
                     
@@ -140,20 +116,12 @@ export let currentUser;
     export const deleteLike = (cardId) => {
         fetch('https://nomoreparties.co/v1/plus-cohort-14//cards/likes/'  + cardId, {
             method: 'DELETE',
-            headers: {
-                authorization: '2b115875-5f8a-40be-8d8a-4a3dc9ce97a5',
-                'Content-Type': 'application/json'
-            },
+            headers: config.headers,
             body: JSON.stringify({
                 _id: cardId
             })
         })
-        .then(res => {
-            if (res.ok) {
-            return res.json();
-            }
-            return Promise.reject(`Ошибка: ${res.status}`);
-        })
+        .then((res) => checkResponse(res))
         .catch((err) => {
             console.log(err); 
         }); 
@@ -162,20 +130,12 @@ export let currentUser;
     export const deleteCard = (cardTrash) => {
         fetch('https://nomoreparties.co/v1/plus-cohort-14/cards/'  + cardTrash, {
             method: 'DELETE',
-            headers: {
-                authorization: '2b115875-5f8a-40be-8d8a-4a3dc9ce97a5',
-                'Content-Type': 'application/json'
-            },
+            headers: config.headers,
             body: JSON.stringify({
                 _id: cardTrash
             })
         })
-        .then(res => {
-            if (res.ok) {
-                return res.json();
-            }
-            return Promise.reject(`Ошибка: ${res.status}`);
-        })
+        .then((res) => checkResponse(res))
         .catch((err) => {
             console.log(err); 
         }); 
@@ -184,20 +144,12 @@ export let currentUser;
     export const updateAvatar = (avatar) => {
         fetch('https://nomoreparties.co/v1/plus-cohort-14/users/me/avatar', {
             method: 'PATCH',
-            headers: {
-                authorization: '2b115875-5f8a-40be-8d8a-4a3dc9ce97a5',
-                'Content-Type': 'application/json'
-            },
+            headers: config.headers,
             body: JSON.stringify({
                 avatar: avatar
             })
         })
-        .then(res => {
-            if (res.ok) {
-                return res.json();
-            }
-            return Promise.reject(`Ошибка: ${res.status}`);
-        })
+        .then((res) => checkResponse(res))
         .then((res) => {
             avatar = res.avatar;
             disableButton(validationConfig, formButtonAvatar);
