@@ -51,7 +51,7 @@ export let currentUser;
         }); 
       
     
-    export const userNameAbout = (userName, userAbout) => {
+    export const updateUserInfo = (userName, userAbout) => {
         fetch('https://nomoreparties.co/v1/plus-cohort-14/users/me', {
             method: 'PATCH',
             headers: {
@@ -79,7 +79,7 @@ export let currentUser;
         }); 
     }
 
-    export  const userFoto = (fotoName, fotoLink) => {
+    export  const addCard = (fotoName, fotoLink) => {
         fetch('https://nomoreparties.co/v1/plus-cohort-14/cards', {
             method: 'POST',
             headers: {
@@ -111,7 +111,7 @@ export let currentUser;
     }
 
   
-    export const likeCount = (cardId) => {
+    export const likeCard = (cardId) => {
         fetch('https://nomoreparties.co/v1/plus-cohort-14//cards/likes/' + cardId, {
             method: 'PUT',
             headers: {
@@ -137,7 +137,7 @@ export let currentUser;
         });   
     }
 
-    export const deledeLike = (cardId) => {
+    export const deleteLike = (cardId) => {
         fetch('https://nomoreparties.co/v1/plus-cohort-14//cards/likes/'  + cardId, {
             method: 'DELETE',
             headers: {
@@ -181,7 +181,7 @@ export let currentUser;
         }); 
     }
 
-    export const userAvatar = (avatar) => {
+    export const updateAvatar = (avatar) => {
         fetch('https://nomoreparties.co/v1/plus-cohort-14/users/me/avatar', {
             method: 'PATCH',
             headers: {

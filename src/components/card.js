@@ -1,6 +1,6 @@
 import {openPicture, openPopup, closePopup} from './modal.js';
 import {template} from './utils/utils.js';
-import {likeCount, deledeLike, deleteCard, currentUser} from './api.js';
+import {likeCard, deleteLike, deleteCard, currentUser} from './api.js';
 
 let count = 0;
 export function createCard (element) {
@@ -14,10 +14,10 @@ export function createCard (element) {
     if(element.owner._id !== currentUser){
         trashButton.setAttribute('style', 'display:none');
     }
-    if (element.likes != undefined) count = element.likes.length;
+    if (element.likes !== undefined) count = element.likes.length;
         element.likes.forEach((function (element) {
-            if(currentUser!=null) {
-                if(element._id == currentUser){
+            if(currentUser!==null) {
+                if(element._id === currentUser){
                     likeButton.classList.add('elements__button_active');
                 }
             } 
@@ -33,10 +33,10 @@ export function createCard (element) {
         likeButton.setAttribute('internal_id',element._id);
         trashButton.formOpen = document.querySelector('#formOpenTrashCard'); 
         trashButton.addEventListener('click', function (evt) {
-            openPopup(evt)
+            //openPopup(evt)
                 const listItem = trashButton.closest('.elements__foto');
                 listItem.remove();
-                closePopup(evt);
+                //closePopup(evt);
                 deleteCard(element._id);
         });
         
@@ -55,10 +55,10 @@ function clickLike(evt) {
  function countLike(evt) {
     let cardId = evt.currentTarget.getAttribute('internal_id');
     if(evt.currentTarget.classList.contains('elements__button_active')){
-        likeCount(cardId);
+        likeCard(cardId);
         evt.currentTarget.parentElement.querySelector('.elements__like-counter').textContent-=-1;
     } else {
-        deledeLike(cardId);
+        deleteLike(cardId);
         evt.currentTarget.parentElement.querySelector('.elements__like-counter').textContent-=+1;
     } 
 }

@@ -1,5 +1,5 @@
     import '../pages/index.css';
-    import {userFoto, userAvatar, userNameAbout} from './api.js';
+    import {addCard, updateAvatar, updateUserInfo} from './api.js';
     import {enableValidation} from './validate.js';
     import {openPopup, closePopup} from './modal.js';
     import {nameInput, profileAvatar, profileDescription, profileName, jobInput, validationConfig, template} from './utils/utils.js';
@@ -53,7 +53,7 @@
     function addPicture(evt) {
         evt.preventDefault();
         const element  = {name:namePicture.value, link:linkPicture.value };
-        userFoto(namePicture.value, linkPicture.value);
+        addCard(namePicture.value, linkPicture.value);
         namePicture.value = '';
         linkPicture.value = '';
     }
@@ -61,7 +61,7 @@
     function changeAvatar (evt){
         evt.preventDefault();
         profileAvatar.src = linkAvatar.value;
-        userAvatar(linkAvatar.value);
+        updateAvatar(linkAvatar.value);
         linkAvatar.value = '';
     }
 
@@ -69,7 +69,7 @@
         evt.preventDefault(); 
         profileName.textContent = nameInput.value;
         profileDescription.textContent = jobInput.value;
-        userNameAbout(nameInput.value,jobInput.value);
+        updateUserInfo(nameInput.value,jobInput.value);
     }
 
     export function insertToContainer(cardElement, isPretend = false) {
