@@ -25,6 +25,7 @@
     formEditProfile.formClose = document.querySelector('#formOpen'); 
     newPictureForm.formClose = document.querySelector('#formOpenPicture'); 
     bigPictureClose.formClose = document.querySelector('#bigPicture'); 
+    avatarPicture.formClose = document.querySelector('#formOpenAvatar'); 
     const namePicture = document.getElementById('title-input');
     const linkPicture = document.getElementById('url-input');
     const linkAvatar = document.getElementById('url-avatar');
@@ -44,7 +45,7 @@
     function addPicture(evt) {
         evt.preventDefault();
         const element  = {name:namePicture.value, link:linkPicture.value };
-        addCard(namePicture.value, linkPicture.value);
+        addCard(namePicture.value, linkPicture.value, evt);
         namePicture.value = '';
         linkPicture.value = '';
     }
@@ -52,7 +53,7 @@
     function changeAvatar (evt){
         evt.preventDefault();
         profileAvatar.src = linkAvatar.value;
-        updateAvatar(linkAvatar.value);
+        updateAvatar(linkAvatar.value,evt);
         linkAvatar.value = '';
     }
 
@@ -60,7 +61,7 @@
         evt.preventDefault(); 
         profileName.textContent = nameInput.value;
         profileDescription.textContent = jobInput.value;
-        updateUserInfo(nameInput.value,jobInput.value);
+        updateUserInfo(nameInput.value,jobInput.value, evt);
     }
 
     export function insertToContainer(cardElement, isPretend = false) {

@@ -5,9 +5,7 @@ const forms = Array.from(document.querySelectorAll('.form'));
 export function openPopup(evt) {
     evt.currentTarget.formOpen.classList.add('form_opened');
     document.addEventListener('keydown', closeEscape);
-    forms.forEach((overlayElement) => {
-        overlayElement.addEventListener('click', closeOverlay);
-    })
+    evt.currentTarget.formOpen.addEventListener('click', closeOverlay);
 }
 function closeOverlay(evt) {
     const formOpened = document.querySelector('.form_opened');
@@ -17,20 +15,24 @@ function closeOverlay(evt) {
     const formArea = formOpened.querySelector('.form__popup');
     const withinBoundaries = evt.composedPath().includes(formArea);
     if ( ! withinBoundaries ) {
-        closePopup(evt);
+        closePopupInternal(evt.currentTarget);
     }
 }
 export function closePopup(evt) {
-    document.removeEventListener('keydown', closeEscape);
-    forms.forEach((overlayElement) => {
-        overlayElement.removeEventListener('click', closeOverlay);
-    })
-    document.querySelector('.form_opened').classList.remove('form_opened');
+    closePopupInternal(evt.currentTarget.formClose);   
 }
+
+
+export function closePopupInternal(formClosing) {
+    document.removeEventListener('keydown', closeEscape);
+    formClosing.removeEventListener('click', closeOverlay);
+    formClosing.classList.remove('form_opened');
+}
+
 function closeEscape(evt) {
     if (evt.key === 'Escape') {
         const openedPopup = document.querySelector('.form_opened');
-        closePopup(openedPopup);
+        closePopupInternal(openedPopup);
     };
 } 
 export function openPicture(evt) {

@@ -1,6 +1,6 @@
 import {createCard} from './card.js';
 import {insertToContainer, renderLoadingremove} from './index.js';
-import {closePopup} from './modal.js';
+import {closePopup, closePopupInternal} from './modal.js';
 import {nameInput, jobInput, profileName, profileAvatar, profileDescription, validationConfig, formButtonAvatar, profileNameChange, newCardButton} from './utils/utils.js';
 import {disableButton} from './validate.js';
 export let currentUser;
@@ -22,37 +22,40 @@ const checkResponse = (res) => {
         headers: config.headers,
     })
         .then((res) => checkResponse(res))
-        .then((res) => {
-            console.log(res)
-            res.forEach((function (element) {
-                insertToContainer(createCard(element));
-            }));
-        })
-        .catch((err) => {
-            console.log(err); 
-        }); 
+
     }
-    getCards()//
+    getCards()
+    .then((res) => {
+        console.log(res)
+        res.forEach((function (element) {
+            insertToContainer(createCard(element));
+        }));
+    })
+    .catch((err) => {
+        console.log(err); 
+    }); 
+
     export const getUserMe = () => {
         return fetch('https://nomoreparties.co/v1/plus-cohort-14/users/me', {
         headers: config.headers,
     })
         .then((res) => checkResponse(res))
-        .then((res) => {
-            profileAvatar.src = res.avatar;
-            profileName.textContent = res.name;
-            profileDescription.textContent = res.about;
-            nameInput.value = res.name;
-            jobInput.value = res.about;
-            currentUser = res._id;
-            console.log(res.avatar);
-        })
-        .catch((err) => {
-            console.log(err); 
-        }); 
+       
     }
-    getUserMe()//
-    export const updateUserInfo = (userName, userAbout) => {
+    getUserMe()
+    .then((res) => {
+        profileAvatar.src = res.avatar;
+        profileName.textContent = res.name;
+        profileDescription.textContent = res.about;
+        nameInput.value = res.name;
+        jobInput.value = res.about;
+        currentUser = res._id;
+        console.log(res.avatar);
+    })
+    .catch((err) => {
+        console.log(err); 
+    }); 
+    export const updateUserInfo = (userName, userAbout,evt) => {
         fetch('https://nomoreparties.co/v1/plus-cohort-14/users/me', {
             method: 'PATCH',
             headers: config.headers,
@@ -64,7 +67,7 @@ const checkResponse = (res) => {
         .then((res) => checkResponse(res))
         .then((res) => {
             disableButton(validationConfig, profileNameChange);
-            closePopup();
+            closePopupInternal(evt.target.formClose);
             profileNameChange.textContent = 'Сохранить';
             //renderLoadingremove(profileNameChange);
         })
@@ -73,7 +76,7 @@ const checkResponse = (res) => {
         }); 
     }
 
-    export  const addCard = (fotoName, fotoLink) => {
+    export  const addCard = (fotoName, fotoLink, evt) => {
         fetch('https://nomoreparties.co/v1/plus-cohort-14/cards', {
             method: 'POST',
             headers: config.headers,
@@ -85,7 +88,7 @@ const checkResponse = (res) => {
         .then((res) => checkResponse(res))
         .then((res) => {
             disableButton(validationConfig, newCardButton);
-            closePopup();
+            closePopupInternal(evt.target.formClose);
             //renderLoadingremove(newCardButton);
             newCardButton.textContent = 'Сохранить';
             insertToContainer(createCard(res),true);
@@ -143,7 +146,7 @@ const checkResponse = (res) => {
         }); 
     }
 
-    export const updateAvatar = (avatar) => {
+    export const updateAvatar = (avatar, evt) => {
         fetch('https://nomoreparties.co/v1/plus-cohort-14/users/me/avatar', {
             method: 'PATCH',
             headers: config.headers,
@@ -155,7 +158,7 @@ const checkResponse = (res) => {
         .then((res) => {
             avatar = res.avatar;
             disableButton(validationConfig, formButtonAvatar);
-            closePopup();
+            closePopupInternal(evt.target.formClose);
             //renderLoadingremove(formButtonAvatar);
             formButtonAvatar.textContent = 'Сохранить';
                 
