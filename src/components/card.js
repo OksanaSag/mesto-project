@@ -23,20 +23,12 @@ export function createCard (element) {
             } 
    }))
     likeCounter.textContent = count;
-    /*
-    function clickLike(element) {
-        likeButton.classList.toggle('elements__button_active');
-        countLike(element)
-     }*/
-
         likeButton.addEventListener('click', clickLike);
         likeButton.setAttribute('internal_id',element._id);
         trashButton.formOpen = document.querySelector('#formOpenTrashCard'); 
         trashButton.addEventListener('click', function (evt) {
-            //openPopup(evt)
                 const listItem = trashButton.closest('.elements__foto');
                 listItem.remove();
-                //closePopup(evt);
                 deleteCard(element._id);
         });
         

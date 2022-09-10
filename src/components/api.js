@@ -1,13 +1,14 @@
 import {createCard} from './card.js';
-import {insertToContainer, renderLoadingremove} from './index.js';
-import {closePopup, closePopupInternal} from './modal.js';
-import {nameInput, jobInput, profileName, profileAvatar, profileDescription, validationConfig, formButtonAvatar, profileNameChange, newCardButton} from './utils/utils.js';
+import {insertToContainer} from './index.js';
+import {closePopupInternal} from './modal.js';
+import {validationConfig, formButtonAvatar, profileNameChange, newCardButton} from './utils/utils.js';
 import {disableButton} from './validate.js';
 export let currentUser;
 export function InitialiseCurrentUser(id) {
     if(currentUser==null)
         currentUser = id;
 } 
+
 const config = {
 headers: {
     authorization: '2b115875-5f8a-40be-8d8a-4a3dc9ce97a5',
@@ -20,23 +21,20 @@ const checkResponse = (res) => {
     }
     return Promise.reject(`Ошибка: ${res.status}`);
   };
-  export const getCards = () => {
-    return fetch('https://nomoreparties.co/v1/plus-cohort-14/cards', {
-        headers: config.headers,
-    })
-        .then((res) => checkResponse(res))
 
+    export const getCards = () => {
+        return fetch('https://nomoreparties.co/v1/plus-cohort-14/cards', {
+            headers: config.headers,
+        })
+        .then((res) => checkResponse(res))
     }
    
-
     export const getUserMe = () => {
         return fetch('https://nomoreparties.co/v1/plus-cohort-14/users/me', {
         headers: config.headers,
-    })
+        })
         .then((res) => checkResponse(res))
-       
     }
-   
 
     export const updateUserInfo = (userName, userAbout,evt) => {
         fetch('https://nomoreparties.co/v1/plus-cohort-14/users/me', {
@@ -137,7 +135,6 @@ const checkResponse = (res) => {
             disableButton(validationConfig, formButtonAvatar);
             closePopupInternal(evt.target.formClose);
             formButtonAvatar.textContent = 'Сохранить';
-                
         })
         .catch((err) => {
             console.log(err); 

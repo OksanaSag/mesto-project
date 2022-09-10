@@ -1,8 +1,8 @@
     import '../pages/index.css';
     import {createCard} from './card.js';
     import {addCard, updateAvatar, updateUserInfo, getUserMe, InitialiseCurrentUser, getCards} from './api.js';
-    import {enableValidation, disableButton} from './validate.js';
-    import {openPopup, closePopup, closePopupInternal} from './modal.js';
+    import {enableValidation} from './validate.js';
+    import {openPopup, closePopup} from './modal.js';
     import {nameInput, profileAvatar, profileDescription, profileName, jobInput, validationConfig, template} from './utils/utils.js';
     
     const profileEditPopup = document.querySelector('.profile__edit-button');
@@ -78,7 +78,6 @@
         profileName.textContent = nameInput.value;
         profileDescription.textContent = jobInput.value;
         updateUserInfo(nameInput.value,jobInput.value, evt)
-        
     }
 
     export function insertToContainer(cardElement, isPretend = false) {

@@ -1,6 +1,5 @@
 import {pictureCaption, formImage} from './utils/utils.js';
 
-
 const forms = Array.from(document.querySelectorAll('.form'));
 export function openPopup(evt) {
     evt.currentTarget.formOpen.classList.add('form_opened');
@@ -21,7 +20,6 @@ function closeOverlay(evt) {
 export function closePopup(evt) {
     closePopupInternal(evt.currentTarget.formClose);   
 }
-
 
 export function closePopupInternal(formClosing) {
     document.removeEventListener('keydown', closeEscape);
