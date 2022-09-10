@@ -30,17 +30,6 @@
     const linkAvatar = document.getElementById('url-avatar');
     const formButtonAvatar = document.querySelector('#formButtonAvatar');
     formButtonAvatar.formClose = document.querySelector('#formOpenAvatar');
-    //export const nameInput = document.querySelector('.form__line_box_name');
-    //export const jobInput = document.querySelector('.form__line_box_description');
-    //export const profileName = document.querySelector('.profile__name');
-    //export const profileDescription = document.querySelector('.profile__description'); 
-    //export const profileAvatar = document.querySelector('.profile__avatar'); 
-    //export const template = document.querySelector('#elementsList');
-    //export const popupBigPicture = document.querySelector('#bigPicture');
-    //export const pictureCaption = popupBigPicture.querySelector('.form__caption');
-    //export const formImage = popupBigPicture.querySelector('.form__image');
-    export const buttonSubmit = newPictureButton.formOpen.querySelector('.form__button');
-    //export let currentUser;
     
     
 
