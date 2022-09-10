@@ -4,7 +4,10 @@ import {closePopup, closePopupInternal} from './modal.js';
 import {nameInput, jobInput, profileName, profileAvatar, profileDescription, validationConfig, formButtonAvatar, profileNameChange, newCardButton} from './utils/utils.js';
 import {disableButton} from './validate.js';
 export let currentUser;
-
+export function InitialiseCurrentUser(id) {
+    if(currentUser==null)
+        currentUser = id;
+} 
 const config = {
 headers: {
     authorization: '2b115875-5f8a-40be-8d8a-4a3dc9ce97a5',
@@ -24,16 +27,7 @@ const checkResponse = (res) => {
         .then((res) => checkResponse(res))
 
     }
-    getCards()
-    .then((res) => {
-        console.log(res)
-        res.forEach((function (element) {
-            insertToContainer(createCard(element));
-        }));
-    })
-    .catch((err) => {
-        console.log(err); 
-    }); 
+   
 
     export const getUserMe = () => {
         return fetch('https://nomoreparties.co/v1/plus-cohort-14/users/me', {
@@ -42,19 +36,8 @@ const checkResponse = (res) => {
         .then((res) => checkResponse(res))
        
     }
-    getUserMe()
-    .then((res) => {
-        profileAvatar.src = res.avatar;
-        profileName.textContent = res.name;
-        profileDescription.textContent = res.about;
-        nameInput.value = res.name;
-        jobInput.value = res.about;
-        currentUser = res._id;
-        console.log(res.avatar);
-    })
-    .catch((err) => {
-        console.log(err); 
-    }); 
+   
+
     export const updateUserInfo = (userName, userAbout,evt) => {
         fetch('https://nomoreparties.co/v1/plus-cohort-14/users/me', {
             method: 'PATCH',
@@ -69,7 +52,6 @@ const checkResponse = (res) => {
             disableButton(validationConfig, profileNameChange);
             closePopupInternal(evt.target.formClose);
             profileNameChange.textContent = 'Сохранить';
-            //renderLoadingremove(profileNameChange);
         })
         .catch((err) => {
             console.log(err); 
@@ -89,7 +71,6 @@ const checkResponse = (res) => {
         .then((res) => {
             disableButton(validationConfig, newCardButton);
             closePopupInternal(evt.target.formClose);
-            //renderLoadingremove(newCardButton);
             newCardButton.textContent = 'Сохранить';
             insertToContainer(createCard(res),true);
         })
@@ -98,8 +79,6 @@ const checkResponse = (res) => {
             
         }); 
     }
-
-  
     export const likeCard = (cardId) => {
         fetch('https://nomoreparties.co/v1/plus-cohort-14//cards/likes/' + cardId, {
             method: 'PUT',
@@ -110,8 +89,6 @@ const checkResponse = (res) => {
         }) 
         .then((res) => checkResponse(res))
         .then((res) => {
-            //likesLength = res.likes
-                    
         })
         .catch((err) => {
             console.log(err); 
@@ -159,7 +136,6 @@ const checkResponse = (res) => {
             avatar = res.avatar;
             disableButton(validationConfig, formButtonAvatar);
             closePopupInternal(evt.target.formClose);
-            //renderLoadingremove(formButtonAvatar);
             formButtonAvatar.textContent = 'Сохранить';
                 
         })

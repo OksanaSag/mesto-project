@@ -1,7 +1,8 @@
     import '../pages/index.css';
-    import {addCard, updateAvatar, updateUserInfo} from './api.js';
-    import {enableValidation} from './validate.js';
-    import {openPopup, closePopup} from './modal.js';
+    import {createCard} from './card.js';
+    import {addCard, updateAvatar, updateUserInfo, getUserMe, InitialiseCurrentUser, getCards} from './api.js';
+    import {enableValidation, disableButton} from './validate.js';
+    import {openPopup, closePopup, closePopupInternal} from './modal.js';
     import {nameInput, profileAvatar, profileDescription, profileName, jobInput, validationConfig, template} from './utils/utils.js';
     
     const profileEditPopup = document.querySelector('.profile__edit-button');
@@ -32,15 +33,30 @@
     const formButtonAvatar = document.querySelector('#formButtonAvatar');
     formButtonAvatar.formClose = document.querySelector('#formOpenAvatar');
     
-    
+    getCards()
+    .then((res) => {
+        console.log(res)
+        res.forEach((function (element) {
+            insertToContainer(createCard(element));
+        }));
+    })
+    .catch((err) => {
+        console.log(err); 
+    }); 
 
-    //export function renderLoadingremove(evt) {
-    //    evt.innerText = 'Сохранить';
-    //}
-
-    //function renderLoading(evt) {
-      //  evt.target.textContent = 'Сохранение...';
-    //}
+    getUserMe()
+    .then((res) => {
+        profileAvatar.src = res.avatar;
+        profileName.textContent = res.name;
+        profileDescription.textContent = res.about;
+        nameInput.value = res.name;
+        jobInput.value = res.about;
+        InitialiseCurrentUser(res._id);
+        console.log(res.avatar);
+    })
+    .catch((err) => {
+        console.log(err); 
+    }); 
 
     function addPicture(evt) {
         evt.preventDefault();
@@ -53,7 +69,7 @@
     function changeAvatar (evt){
         evt.preventDefault();
         profileAvatar.src = linkAvatar.value;
-        updateAvatar(linkAvatar.value,evt);
+        updateAvatar(linkAvatar.value, evt);
         linkAvatar.value = '';
     }
 
@@ -61,7 +77,8 @@
         evt.preventDefault(); 
         profileName.textContent = nameInput.value;
         profileDescription.textContent = jobInput.value;
-        updateUserInfo(nameInput.value,jobInput.value, evt);
+        updateUserInfo(nameInput.value,jobInput.value, evt)
+        
     }
 
     export function insertToContainer(cardElement, isPretend = false) {

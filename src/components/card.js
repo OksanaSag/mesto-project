@@ -55,14 +55,14 @@ function clickLike(evt) {
  function countLike(evt) {
     let cardId = evt.currentTarget.getAttribute('internal_id');
     if(evt.currentTarget.classList.contains('elements__button_active')){
-        likeCard(cardId);
+        likeCard(cardId) 
         evt.currentTarget.parentElement.querySelector('.elements__like-counter').textContent-=-1;
     } else {
         deleteLike(cardId);
         evt.currentTarget.parentElement.querySelector('.elements__like-counter').textContent-=+1;
     } 
 }
-
+ 
 
 
  
