@@ -1,6 +1,3 @@
-//import {openPicture} from './modal.js';
-//import {template} from './utils/utils.js';
-//import {currentUser} from './api.js';
 let currentUser;
 export function initialiseCurrentUser(id) {
     if(currentUser===undefined)
@@ -28,7 +25,6 @@ export function createCard (element,  openPicture, template, deleteCard,clickLik
    }))
     likeCounter.textContent = count;
         likeButton.addEventListener('click', clickLike);
-       // likeButton.addEventListener('click', deleteLike);
         likeButton.setAttribute('internal_id',element._id);
         trashButton.formOpen = document.querySelector('#formOpenTrashCard'); 
         trashButton.addEventListener('click', function (evt) {
@@ -36,7 +32,6 @@ export function createCard (element,  openPicture, template, deleteCard,clickLik
                 listItem.remove();
                 deleteCard(element._id);
         });
-        
     elementImage.addEventListener('click', openPicture);
     elementImage.formOpen = document.querySelector('#bigPicture'); 
     elelementsCaption.textContent = element.name;

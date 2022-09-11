@@ -1,18 +1,10 @@
-import {createCard} from './card.js';
-import {openPicture} from './modal.js';
-import {insertToContainer} from './index.js';
-import {closePopupInternal} from './modal.js';
-import {validationConfig, formButtonAvatar, profileNameChange, newCardButton, template} from './utils/utils.js';
-import {disableButton} from './validate.js';
-
-
-
 const config = {
 headers: {
     authorization: '2b115875-5f8a-40be-8d8a-4a3dc9ce97a5',
     'Content-Type': 'application/json',
 },
 }
+
 const checkResponse = (res) => {
     if (res.ok) {
       return res.json();
@@ -44,15 +36,6 @@ const checkResponse = (res) => {
             })
         })
         .then((res) => checkResponse(res))
-        /*
-        .then((res) => {
-            disableButton(validationConfig, profileNameChange);
-            closePopupInternal(evt.target.formClose);
-            profileNameChange.textContent = 'Сохранить';
-        })
-        .catch((err) => {
-            console.log(err); 
-        }); */
     }
 
     export  const addCard = (fotoName, fotoLink, evt) => {
@@ -65,18 +48,8 @@ const checkResponse = (res) => {
             })
         })
         .then((res) => checkResponse(res))
-        /*
-        .then((res) => {
-            disableButton(validationConfig, newCardButton);
-            closePopupInternal(evt.target.formClose);
-            newCardButton.textContent = 'Сохранить';
-            insertToContainer(createCard(res,openPicture,template),true);
-        })
-        .catch((err) => {
-            console.log(err); 
-            
-        }); */
     }
+    
     export const likeCard = (cardId) => {
         return fetch('https://nomoreparties.co/v1/plus-cohort-14//cards/likes/' + cardId, {
             method: 'PUT',
@@ -86,12 +59,6 @@ const checkResponse = (res) => {
             })
         }) 
         .then((res) => checkResponse(res))
-        /*
-        .then((res) => {
-        })
-        .catch((err) => {
-            console.log(err); 
-        });   */
     }
 
     export const deleteLike = (cardId) => {
@@ -103,10 +70,6 @@ const checkResponse = (res) => {
             })
         })
         .then((res) => checkResponse(res))
-        /*
-        .catch((err) => {
-            console.log(err); 
-        }); */
     }
 
     export const deleteCard = (cardTrash) => {
@@ -118,10 +81,6 @@ const checkResponse = (res) => {
             })
         })
         .then((res) => checkResponse(res))
-        /*
-        .catch((err) => {
-            console.log(err); 
-        }); */
     }
 
     export const updateAvatar = (avatar, evt) => {
@@ -133,14 +92,4 @@ const checkResponse = (res) => {
             })
         })
         .then((res) => checkResponse(res))
-        /*
-        .then((res) => {
-            avatar = res.avatar;
-            disableButton(validationConfig, formButtonAvatar);
-            closePopupInternal(evt.target.formClose);
-            formButtonAvatar.textContent = 'Сохранить';
-        })
-        .catch((err) => {
-            console.log(err); 
-        }); */
     }

@@ -33,17 +33,6 @@
     const formButtonAvatar = document.querySelector('#formButtonAvatar');
     formButtonAvatar.formClose = document.querySelector('#formOpenAvatar');
 
-    /*
-    getCards()
-    .then((res) => {
-        res.forEach((function (element) {
-            insertToContainer(createCard(element,openPicture,template));
-        }));
-    })
-    .catch((err) => {
-        console.log(err); 
-    }); */
-
     getUserMe()
     .then((res) => {
         profileAvatar.src = res.avatar;
@@ -57,41 +46,19 @@
     .then(() => getCards())
     .then((res) => {
         res.forEach((function (element) {
-            insertToContainer(createCard(element,openPicture,template, deleteCard,clickLike));
+            insertToContainer(createCard(element,openPicture,template, deleteCardHander,clickLike));
         }));
     })
     .catch((err) => {
         console.log(err); 
     }); 
-    
-    deleteCard()
-    .then((res) => {
-        res._id = element._id
-    })
-    .catch((err) => {
-        console.log(err); 
-    }); 
-      ///
-      /*
-    deleteLike()
-    .then((res) => {
-        
-    })
-    .catch((err) => {
-        console.log(err); 
-    }); 
-    likeCard()
-    .then((res) => {
-       
-    })
-    .catch((err) => {
-        console.log(err); 
-    });*/
+    function deleteCardHander(cardTrash){
+        deleteCard(cardTrash)
+        .catch((err) => {
+            console.log(err); 
+        });
+    }
 
-    
-
-
-//.then
     function addPicture(evt) {
         renderLoading(true,newCardButton);
         evt.preventDefault()
@@ -158,9 +125,16 @@
         let cardId = evt.currentTarget.getAttribute('internal_id');
         if(evt.currentTarget.classList.contains('elements__button_active')){
             likeCard(cardId) 
+            .catch((err) => {
+                console.log(err); 
+            }); 
             evt.currentTarget.parentElement.querySelector('.elements__like-counter').textContent-=-1;
         } else {
-            deleteLike(cardId);
+            deleteLike(cardId)
+            .catch((err) => {
+                console.log(err); 
+                
+            }); 
             evt.currentTarget.parentElement.querySelector('.elements__like-counter').textContent-=+1;
         } 
     }
@@ -175,6 +149,4 @@
     newPictureForm.addEventListener('submit', addPicture);  
     avatarPicture.addEventListener('submit', changeAvatar);
     
-   
-
     enableValidation(validationConfig); 

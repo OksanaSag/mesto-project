@@ -16,6 +16,7 @@ function closeOverlay(evt) {
         closePopup(evt.currentTarget);
     }
 }
+
 export function closePopup(evt) {
     let formClosing = evt;
     if(evt.currentTarget!=null && evt.currentTarget.formClose!=null)
@@ -25,12 +26,6 @@ export function closePopup(evt) {
     formClosing.classList.remove('form_opened');
     
 }
-/*
-export function closePopupInternal(formClosing) {
-    document.removeEventListener('keydown', closeEscape);
-    formClosing.removeEventListener('click', closeOverlay);
-    formClosing.classList.remove('form_opened');
-}*/
 
 function closeEscape(evt) {
     if (evt.key === 'Escape') {
@@ -38,6 +33,7 @@ function closeEscape(evt) {
         closePopup(openedPopup);
     };
 } 
+
 export function openPicture(evt) {
     formImage.src = evt.target.src;
     formImage.alt = evt.target.alt;
