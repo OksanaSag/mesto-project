@@ -4,11 +4,8 @@ import {insertToContainer} from './index.js';
 import {closePopupInternal} from './modal.js';
 import {validationConfig, formButtonAvatar, profileNameChange, newCardButton, template} from './utils/utils.js';
 import {disableButton} from './validate.js';
-export let currentUser;
-export function initialiseCurrentUser(id) {
-    if(currentUser===undefined)
-        currentUser = id;
-} 
+
+
 
 const config = {
 headers: {

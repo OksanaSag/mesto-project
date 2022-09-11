@@ -1,9 +1,13 @@
 //import {openPicture} from './modal.js';
 //import {template} from './utils/utils.js';
-import {likeCard, deleteLike, currentUser} from './api.js';
-
+//import {currentUser} from './api.js';
+let currentUser;
+export function initialiseCurrentUser(id) {
+    if(currentUser===undefined)
+        currentUser = id;
+} 
 let count = 0;
-export function createCard (element, openPicture, template, deleteCard, deleteLike) {
+export function createCard (element,  openPicture, template, deleteCard,clickLike ) {
     const clone = template.content.cloneNode(true);
     const elelementsCaption = clone.querySelector('.elements__caption');
     const elementImage = clone.querySelector('.elements__image');
@@ -24,6 +28,7 @@ export function createCard (element, openPicture, template, deleteCard, deleteLi
    }))
     likeCounter.textContent = count;
         likeButton.addEventListener('click', clickLike);
+       // likeButton.addEventListener('click', deleteLike);
         likeButton.setAttribute('internal_id',element._id);
         trashButton.formOpen = document.querySelector('#formOpenTrashCard'); 
         trashButton.addEventListener('click', function (evt) {
@@ -39,21 +44,7 @@ export function createCard (element, openPicture, template, deleteCard, deleteLi
     elementImage.alt = element.name;
     return clone;
 }
-function clickLike(evt) {
-    evt.currentTarget.classList.toggle('elements__button_active');
-    countLike(evt);
- }
 
- function countLike(evt) {
-    let cardId = evt.currentTarget.getAttribute('internal_id');
-    if(evt.currentTarget.classList.contains('elements__button_active')){
-        likeCard(cardId) 
-        evt.currentTarget.parentElement.querySelector('.elements__like-counter').textContent-=-1;
-    } else {
-        deleteLike(cardId);
-        evt.currentTarget.parentElement.querySelector('.elements__like-counter').textContent-=+1;
-    } 
-}
  
 
 

@@ -1,6 +1,6 @@
     import '../pages/index.css';
-    import {createCard} from './card.js';
-    import {addCard, updateAvatar, updateUserInfo, getUserMe, initialiseCurrentUser, getCards, likeCard, deleteLike, deleteCard} from './api.js';
+    import {createCard,initialiseCurrentUser} from './card.js';
+    import {addCard, updateAvatar, updateUserInfo, getUserMe, getCards, likeCard, deleteLike, deleteCard} from './api.js';
     import {enableValidation, disableButton} from './validate.js';
     import {openPopup, closePopup, openPicture} from './modal.js';
     import {nameInput, profileAvatar, profileDescription, profileName, jobInput, validationConfig, template, renderLoading} from './utils/utils.js';
@@ -57,30 +57,39 @@
     .then(() => getCards())
     .then((res) => {
         res.forEach((function (element) {
-            insertToContainer(createCard(element,openPicture,template, deleteCard));
+            insertToContainer(createCard(element,openPicture,template, deleteCard,clickLike));
         }));
     })
     .catch((err) => {
         console.log(err); 
     }); 
-   /////
-   /*
-    likeCard()
+    
+    deleteCard()
     .then((res) => {
+        res._id = element._id
     })
     .catch((err) => {
         console.log(err); 
-    });
-
+    }); 
+      ///
+      /*
     deleteLike()
+    .then((res) => {
+        
+    })
     .catch((err) => {
         console.log(err); 
     }); 
-
-    deleteCard()
+    likeCard()
+    .then((res) => {
+       
+    })
     .catch((err) => {
         console.log(err); 
-    }); */
+    });*/
+
+    
+
 
 //.then
     function addPicture(evt) {
@@ -91,7 +100,7 @@
             disableButton(validationConfig, newCardButton);
             closePopup(evt.target.formClose);
             renderLoading(false,newCardButton);
-            insertToContainer(createCard(res,openPicture,template),true);
+            insertToContainer(createCard(res,openPicture,template, deleteCard,clickLike),true);
         })
         .catch((err) => {
             console.log(err); 
@@ -140,7 +149,21 @@
         else
             template.parentNode.append(cardElement);
     }
-
+    function clickLike(evt) {
+        evt.currentTarget.classList.toggle('elements__button_active');
+        countLike(evt);
+     }
+    
+     function countLike(evt) {
+        let cardId = evt.currentTarget.getAttribute('internal_id');
+        if(evt.currentTarget.classList.contains('elements__button_active')){
+            likeCard(cardId) 
+            evt.currentTarget.parentElement.querySelector('.elements__like-counter').textContent-=-1;
+        } else {
+            deleteLike(cardId);
+            evt.currentTarget.parentElement.querySelector('.elements__like-counter').textContent-=+1;
+        } 
+    }
     profileEditPopup.addEventListener('click', openPopup);
     newPictureButton.addEventListener('click', openPopup);
     avatarChange.addEventListener('click', openPopup);
