@@ -1,8 +1,8 @@
     import '../pages/index.css';
     import {createCard} from './card.js';
-    import {addCard, updateAvatar, updateUserInfo, getUserMe, initialiseCurrentUser, getCards} from './api.js';
+    import {addCard, updateAvatar, updateUserInfo, getUserMe, initialiseCurrentUser, getCards, likeCard, deleteLike, deleteCard} from './api.js';
     import {enableValidation, disableButton} from './validate.js';
-    import {openPopup, closePopup, openPicture, closePopupInternal} from './modal.js';
+    import {openPopup, closePopup, openPicture} from './modal.js';
     import {nameInput, profileAvatar, profileDescription, profileName, jobInput, validationConfig, template} from './utils/utils.js';
     
     const profileEditPopup = document.querySelector('.profile__edit-button');
@@ -32,7 +32,7 @@
     const linkAvatar = document.getElementById('url-avatar');
     const formButtonAvatar = document.querySelector('#formButtonAvatar');
     formButtonAvatar.formClose = document.querySelector('#formOpenAvatar');
-    
+
     /*
     getCards()
     .then((res) => {
@@ -57,21 +57,40 @@
     .then(() => getCards())
     .then((res) => {
         res.forEach((function (element) {
-            insertToContainer(createCard(element,openPicture,template));
+            insertToContainer(createCard(element,openPicture,template, deleteCard));
         }));
     })
     .catch((err) => {
         console.log(err); 
     }); 
-   
+   /////
+   /*
+    likeCard()
+    .then((res) => {
+    })
+    .catch((err) => {
+        console.log(err); 
+    });
+
+    deleteLike()
+    .catch((err) => {
+        console.log(err); 
+    }); */
+
+    deleteCard()
+    .catch((err) => {
+        console.log(err); 
+    }); 
+
 //.then
     function addPicture(evt) {
+        renderLoading(true,newCardButton);
         evt.preventDefault()
         addCard(namePicture.value, linkPicture.value, evt)
         .then((res) => {
             disableButton(validationConfig, newCardButton);
-            closePopupInternal(evt.target.formClose);
-            newCardButton.textContent = 'Сохранить';
+            closePopup(evt.target.formClose);
+            renderLoading(false,newCardButton);
             insertToContainer(createCard(res,openPicture,template),true);
         })
         .catch((err) => {
@@ -84,14 +103,14 @@
     }
 
     function changeAvatar (evt){
+        renderLoading(true,formButtonAvatar);
         evt.preventDefault();
         profileAvatar.src = linkAvatar.value;
         updateAvatar(linkAvatar.value, evt)
         .then((res) => {
-            //avatar = res.avatar;
             disableButton(validationConfig, formButtonAvatar);
-            closePopupInternal(evt.target.formClose);
-            formButtonAvatar.textContent = 'Сохранить';
+            closePopup(evt.target.formClose);
+            renderLoading(false,formButtonAvatar);
         })
         .catch((err) => {
             console.log(err); 
@@ -100,14 +119,15 @@
     }
 
     function editProfile(evt) {
+        renderLoading(true,profileNameChange);
         evt.preventDefault(); 
         profileName.textContent = nameInput.value;
         profileDescription.textContent = jobInput.value;
         updateUserInfo(nameInput.value,jobInput.value, evt)
         .then((res) => {
             disableButton(validationConfig, profileNameChange);
-            closePopupInternal(evt.target.formClose);
-            profileNameChange.textContent = 'Сохранить';
+            closePopup(evt.target.formClose);
+            renderLoading(false,profileNameChange);
         })
         .catch((err) => {
             console.log(err); 
@@ -131,13 +151,13 @@
     formEditProfile.addEventListener('submit', editProfile);
     newPictureForm.addEventListener('submit', addPicture);  
     avatarPicture.addEventListener('submit', changeAvatar);
-    profileNameChange.addEventListener('click', evt => {
-        evt.target.textContent = 'Сохранение...';
-    })
-    newCardButton.addEventListener('click', evt => {
-        evt.target.textContent = 'Сохранение...';
-    })
-    formButtonAvatar.addEventListener('click', evt => {
-        evt.target.textContent = 'Сохранение...';
-    })
+    
+    function renderLoading(isLoading, saveButton) {
+        if (isLoading) {
+            saveButton.textContent = 'Сохранение...';
+        } else {
+            saveButton.textContent = 'Сохранить';
+        }
+      }
+
     enableValidation(validationConfig); 

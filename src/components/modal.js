@@ -14,23 +14,30 @@ function closeOverlay(evt) {
     const formArea = formOpened.querySelector('.form__popup');
     const withinBoundaries = evt.composedPath().includes(formArea);
     if ( ! withinBoundaries ) {
-        closePopupInternal(evt.currentTarget);
+        closePopup(evt.currentTarget);
     }
 }
 export function closePopup(evt) {
-    closePopupInternal(evt.currentTarget.formClose);   
+    //closePopupInternal(evt.currentTarget.formClose);  
+    let formClosing = evt;
+    if(evt.currentTarget!=null && evt.currentTarget.formClose!=null)
+        formClosing = evt.currentTarget.formClose;
+    document.removeEventListener('keydown', closeEscape);
+    formClosing.removeEventListener('click', closeOverlay);
+    formClosing.classList.remove('form_opened');
+    
 }
-
+/*
 export function closePopupInternal(formClosing) {
     document.removeEventListener('keydown', closeEscape);
     formClosing.removeEventListener('click', closeOverlay);
     formClosing.classList.remove('form_opened');
-}
+}*/
 
 function closeEscape(evt) {
     if (evt.key === 'Escape') {
         const openedPopup = document.querySelector('.form_opened');
-        closePopupInternal(openedPopup);
+        closePopup(openedPopup);
     };
 } 
 export function openPicture(evt) {

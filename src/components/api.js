@@ -81,7 +81,7 @@ const checkResponse = (res) => {
         }); */
     }
     export const likeCard = (cardId) => {
-        fetch('https://nomoreparties.co/v1/plus-cohort-14//cards/likes/' + cardId, {
+        return fetch('https://nomoreparties.co/v1/plus-cohort-14//cards/likes/' + cardId, {
             method: 'PUT',
             headers: config.headers,
             body: JSON.stringify({
@@ -89,15 +89,16 @@ const checkResponse = (res) => {
             })
         }) 
         .then((res) => checkResponse(res))
+        /*
         .then((res) => {
         })
         .catch((err) => {
             console.log(err); 
-        });   
+        });   */
     }
 
     export const deleteLike = (cardId) => {
-        fetch('https://nomoreparties.co/v1/plus-cohort-14//cards/likes/'  + cardId, {
+        return fetch('https://nomoreparties.co/v1/plus-cohort-14//cards/likes/'  + cardId, {
             method: 'DELETE',
             headers: config.headers,
             body: JSON.stringify({
@@ -105,13 +106,14 @@ const checkResponse = (res) => {
             })
         })
         .then((res) => checkResponse(res))
+        /*
         .catch((err) => {
             console.log(err); 
-        }); 
+        }); */
     }
 
     export const deleteCard = (cardTrash) => {
-        fetch('https://nomoreparties.co/v1/plus-cohort-14/cards/'  + cardTrash, {
+        return fetch('https://nomoreparties.co/v1/plus-cohort-14/cards/'  + cardTrash, {
             method: 'DELETE',
             headers: config.headers,
             body: JSON.stringify({
@@ -119,9 +121,10 @@ const checkResponse = (res) => {
             })
         })
         .then((res) => checkResponse(res))
+        /*
         .catch((err) => {
             console.log(err); 
-        }); 
+        }); */
     }
 
     export const updateAvatar = (avatar, evt) => {
