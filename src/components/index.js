@@ -1,8 +1,8 @@
     import '../pages/index.css';
     import {createCard} from './card.js';
-    import {addCard, updateAvatar, updateUserInfo, getUserMe, InitialiseCurrentUser, getCards} from './api.js';
+    import {addCard, updateAvatar, updateUserInfo, getUserMe, initialiseCurrentUser, getCards} from './api.js';
     import {enableValidation} from './validate.js';
-    import {openPopup, closePopup} from './modal.js';
+    import {openPopup, closePopup, openPicture} from './modal.js';
     import {nameInput, profileAvatar, profileDescription, profileName, jobInput, validationConfig, template} from './utils/utils.js';
     
     const profileEditPopup = document.querySelector('.profile__edit-button');
@@ -37,7 +37,7 @@
     .then((res) => {
         console.log(res)
         res.forEach((function (element) {
-            insertToContainer(createCard(element));
+            insertToContainer(createCard(element,openPicture,template));
         }));
     })
     .catch((err) => {
@@ -51,7 +51,7 @@
         profileDescription.textContent = res.about;
         nameInput.value = res.name;
         jobInput.value = res.about;
-        InitialiseCurrentUser(res._id);
+        initialiseCurrentUser(res._id);
         console.log(res.avatar);
     })
     .catch((err) => {

@@ -1,11 +1,12 @@
 import {createCard} from './card.js';
+import {openPicture} from './modal.js';
 import {insertToContainer} from './index.js';
 import {closePopupInternal} from './modal.js';
-import {validationConfig, formButtonAvatar, profileNameChange, newCardButton} from './utils/utils.js';
+import {validationConfig, formButtonAvatar, profileNameChange, newCardButton, template} from './utils/utils.js';
 import {disableButton} from './validate.js';
 export let currentUser;
-export function InitialiseCurrentUser(id) {
-    if(currentUser==null)
+export function initialiseCurrentUser(id) {
+    if(currentUser===undefined)
         currentUser = id;
 } 
 
@@ -70,7 +71,7 @@ const checkResponse = (res) => {
             disableButton(validationConfig, newCardButton);
             closePopupInternal(evt.target.formClose);
             newCardButton.textContent = 'Сохранить';
-            insertToContainer(createCard(res),true);
+            insertToContainer(createCard(res,openPicture,template),true);
         })
         .catch((err) => {
             console.log(err); 

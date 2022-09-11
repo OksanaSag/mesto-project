@@ -1,9 +1,9 @@
-import {openPicture} from './modal.js';
-import {template} from './utils/utils.js';
+//import {openPicture} from './modal.js';
+//import {template} from './utils/utils.js';
 import {likeCard, deleteLike, deleteCard, currentUser} from './api.js';
 
 let count = 0;
-export function createCard (element) {
+export function createCard (element, openPicture, template) {
     const clone = template.content.cloneNode(true);
     const elelementsCaption = clone.querySelector('.elements__caption');
     const elementImage = clone.querySelector('.elements__image');
