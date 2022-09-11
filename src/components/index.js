@@ -1,8 +1,8 @@
     import '../pages/index.css';
     import {createCard} from './card.js';
     import {addCard, updateAvatar, updateUserInfo, getUserMe, initialiseCurrentUser, getCards} from './api.js';
-    import {enableValidation} from './validate.js';
-    import {openPopup, closePopup, openPicture} from './modal.js';
+    import {enableValidation, disableButton} from './validate.js';
+    import {openPopup, closePopup, openPicture, closePopupInternal} from './modal.js';
     import {nameInput, profileAvatar, profileDescription, profileName, jobInput, validationConfig, template} from './utils/utils.js';
     
     const profileEditPopup = document.querySelector('.profile__edit-button');
@@ -33,16 +33,16 @@
     const formButtonAvatar = document.querySelector('#formButtonAvatar');
     formButtonAvatar.formClose = document.querySelector('#formOpenAvatar');
     
+    /*
     getCards()
     .then((res) => {
-        console.log(res)
         res.forEach((function (element) {
             insertToContainer(createCard(element,openPicture,template));
         }));
     })
     .catch((err) => {
         console.log(err); 
-    }); 
+    }); */
 
     getUserMe()
     .then((res) => {
@@ -54,14 +54,31 @@
         initialiseCurrentUser(res._id);
         console.log(res.avatar);
     })
+    .then(() => getCards())
+    .then((res) => {
+        res.forEach((function (element) {
+            insertToContainer(createCard(element,openPicture,template));
+        }));
+    })
     .catch((err) => {
         console.log(err); 
     }); 
-
+   
+//.then
     function addPicture(evt) {
-        evt.preventDefault();
+        evt.preventDefault()
+        addCard(namePicture.value, linkPicture.value, evt)
+        .then((res) => {
+            disableButton(validationConfig, newCardButton);
+            closePopupInternal(evt.target.formClose);
+            newCardButton.textContent = 'Сохранить';
+            insertToContainer(createCard(res,openPicture,template),true);
+        })
+        .catch((err) => {
+            console.log(err); 
+            
+        }); 
         const element  = {name:namePicture.value, link:linkPicture.value };
-        addCard(namePicture.value, linkPicture.value, evt);
         namePicture.value = '';
         linkPicture.value = '';
     }
@@ -69,7 +86,16 @@
     function changeAvatar (evt){
         evt.preventDefault();
         profileAvatar.src = linkAvatar.value;
-        updateAvatar(linkAvatar.value, evt);
+        updateAvatar(linkAvatar.value, evt)
+        .then((res) => {
+            //avatar = res.avatar;
+            disableButton(validationConfig, formButtonAvatar);
+            closePopupInternal(evt.target.formClose);
+            formButtonAvatar.textContent = 'Сохранить';
+        })
+        .catch((err) => {
+            console.log(err); 
+        }); 
         linkAvatar.value = '';
     }
 
@@ -78,6 +104,14 @@
         profileName.textContent = nameInput.value;
         profileDescription.textContent = jobInput.value;
         updateUserInfo(nameInput.value,jobInput.value, evt)
+        .then((res) => {
+            disableButton(validationConfig, profileNameChange);
+            closePopupInternal(evt.target.formClose);
+            profileNameChange.textContent = 'Сохранить';
+        })
+        .catch((err) => {
+            console.log(err); 
+        }); 
     }
 
     export function insertToContainer(cardElement, isPretend = false) {

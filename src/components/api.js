@@ -38,7 +38,7 @@ const checkResponse = (res) => {
     }
 
     export const updateUserInfo = (userName, userAbout,evt) => {
-        fetch('https://nomoreparties.co/v1/plus-cohort-14/users/me', {
+        return fetch('https://nomoreparties.co/v1/plus-cohort-14/users/me', {
             method: 'PATCH',
             headers: config.headers,
             body: JSON.stringify({
@@ -47,6 +47,7 @@ const checkResponse = (res) => {
             })
         })
         .then((res) => checkResponse(res))
+        /*
         .then((res) => {
             disableButton(validationConfig, profileNameChange);
             closePopupInternal(evt.target.formClose);
@@ -54,11 +55,11 @@ const checkResponse = (res) => {
         })
         .catch((err) => {
             console.log(err); 
-        }); 
+        }); */
     }
 
     export  const addCard = (fotoName, fotoLink, evt) => {
-        fetch('https://nomoreparties.co/v1/plus-cohort-14/cards', {
+         return fetch('https://nomoreparties.co/v1/plus-cohort-14/cards', {
             method: 'POST',
             headers: config.headers,
             body: JSON.stringify({
@@ -67,6 +68,7 @@ const checkResponse = (res) => {
             })
         })
         .then((res) => checkResponse(res))
+        /*
         .then((res) => {
             disableButton(validationConfig, newCardButton);
             closePopupInternal(evt.target.formClose);
@@ -76,7 +78,7 @@ const checkResponse = (res) => {
         .catch((err) => {
             console.log(err); 
             
-        }); 
+        }); */
     }
     export const likeCard = (cardId) => {
         fetch('https://nomoreparties.co/v1/plus-cohort-14//cards/likes/' + cardId, {
@@ -123,7 +125,7 @@ const checkResponse = (res) => {
     }
 
     export const updateAvatar = (avatar, evt) => {
-        fetch('https://nomoreparties.co/v1/plus-cohort-14/users/me/avatar', {
+        return fetch('https://nomoreparties.co/v1/plus-cohort-14/users/me/avatar', {
             method: 'PATCH',
             headers: config.headers,
             body: JSON.stringify({
@@ -131,6 +133,7 @@ const checkResponse = (res) => {
             })
         })
         .then((res) => checkResponse(res))
+        /*
         .then((res) => {
             avatar = res.avatar;
             disableButton(validationConfig, formButtonAvatar);
@@ -139,5 +142,5 @@ const checkResponse = (res) => {
         })
         .catch((err) => {
             console.log(err); 
-        }); 
+        }); */
     }
