@@ -3,7 +3,7 @@
     import {addCard, updateAvatar, updateUserInfo, getUserMe, initialiseCurrentUser, getCards, likeCard, deleteLike, deleteCard} from './api.js';
     import {enableValidation, disableButton} from './validate.js';
     import {openPopup, closePopup, openPicture} from './modal.js';
-    import {nameInput, profileAvatar, profileDescription, profileName, jobInput, validationConfig, template} from './utils/utils.js';
+    import {nameInput, profileAvatar, profileDescription, profileName, jobInput, validationConfig, template, renderLoading} from './utils/utils.js';
     
     const profileEditPopup = document.querySelector('.profile__edit-button');
     const newPictureButton = document.querySelector('.profile__add-picture');//
@@ -75,12 +75,12 @@
     deleteLike()
     .catch((err) => {
         console.log(err); 
-    }); */
+    }); 
 
     deleteCard()
     .catch((err) => {
         console.log(err); 
-    }); 
+    }); */
 
 //.then
     function addPicture(evt) {
@@ -152,12 +152,6 @@
     newPictureForm.addEventListener('submit', addPicture);  
     avatarPicture.addEventListener('submit', changeAvatar);
     
-    function renderLoading(isLoading, saveButton) {
-        if (isLoading) {
-            saveButton.textContent = 'Сохранение...';
-        } else {
-            saveButton.textContent = 'Сохранить';
-        }
-      }
+   
 
     enableValidation(validationConfig); 

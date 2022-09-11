@@ -25,3 +25,10 @@ export const validationConfig = {
     formButtonAvatar: 'formButtonAvatar',
     profileNameChange: 'profileNameChange'
 };
+export function renderLoading(isLoading, saveButton) {
+    if (isLoading) {
+        saveButton.textContent = 'Сохранение...';
+    } else {
+        saveButton.textContent = 'Сохранить';
+    }
+  }
