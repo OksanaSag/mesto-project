@@ -33,6 +33,12 @@
     const formButtonAvatar = document.querySelector('#formButtonAvatar');
     formButtonAvatar.formClose = document.querySelector('#formOpenAvatar');
 
+    const handlerConfig = {
+        openPicture: openPicture,
+        clickLike: clickLike,
+        deleteCard: deleteCard
+    }
+
     getUserMe()
     .then((res) => {
         profileAvatar.src = res.avatar;
@@ -46,14 +52,14 @@
     .then(() => getCards())
     .then((res) => {
         res.forEach((function (element) {
-            insertToContainer(createCard(element,openPicture,template, deleteCardHander,clickLike));
+            insertToContainer(createCard(element,handlerConfig,template, deleteCardHandler));
         }));
     })
     .catch((err) => {
         console.log(err); 
     }); 
-    function deleteCardHander(cardTrash){
-        deleteCard(cardTrash)
+    function deleteCardHandler(cardTrash){
+        confa.deleteCard(cardTrash)
         .catch((err) => {
             console.log(err); 
         });
@@ -67,7 +73,7 @@
             disableButton(validationConfig, newCardButton);
             closePopup(evt.target.formClose);
             renderLoading(false,newCardButton);
-            insertToContainer(createCard(res,openPicture,template, deleteCard,clickLike),true);
+            insertToContainer(createCard(res,handlerConfig,template),true);
         })
         .catch((err) => {
             console.log(err); 

@@ -4,7 +4,7 @@ export function initialiseCurrentUser(id) {
         currentUser = id;
 } 
 let count = 0;
-export function createCard (element,  openPicture, template, deleteCard,clickLike ) {
+export function createCard (element,  handlerConfig, template ) {
     const clone = template.content.cloneNode(true);
     const elelementsCaption = clone.querySelector('.elements__caption');
     const elementImage = clone.querySelector('.elements__image');
@@ -24,15 +24,15 @@ export function createCard (element,  openPicture, template, deleteCard,clickLik
             } 
    }))
     likeCounter.textContent = count;
-        likeButton.addEventListener('click', clickLike);
+        likeButton.addEventListener('click', handlerConfig.clickLike);
         likeButton.setAttribute('internal_id',element._id);
         trashButton.formOpen = document.querySelector('#formOpenTrashCard'); 
         trashButton.addEventListener('click', function (evt) {
                 const listItem = trashButton.closest('.elements__foto');
                 listItem.remove();
-                deleteCard(element._id);
+                handlerConfig.deleteCard(element._id);
         });
-    elementImage.addEventListener('click', openPicture);
+    elementImage.addEventListener('click', handlerConfig.openPicture);
     elementImage.formOpen = document.querySelector('#bigPicture'); 
     elelementsCaption.textContent = element.name;
     elementImage.src = element.link;

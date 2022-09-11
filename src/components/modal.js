@@ -24,7 +24,6 @@ export function closePopup(evt) {
     document.removeEventListener('keydown', closeEscape);
     formClosing.removeEventListener('click', closeOverlay);
     formClosing.classList.remove('form_opened');
-    
 }
 
 function closeEscape(evt) {
