@@ -1,5 +1,5 @@
     import '../pages/index.css';
-    import {createCard,initialiseCurrentUser} from './card.js';
+    import {createCard} from './card.js';
     import {addCard, updateAvatar, updateUserInfo, getUserInfo, getCards, likeCard, deleteLike, deleteCard} from './api.js';
     import {enableValidation, disableButton} from './validate.js';
     import {openPopup, closePopup, openPicture} from './modal.js';
@@ -32,6 +32,7 @@
     const linkAvatar = document.getElementById('url-avatar');
     const formButtonAvatar = document.querySelector('#formButtonAvatar');
     formButtonAvatar.formClose = document.querySelector('#formOpenAvatar');
+    export let currentUser;
 
     const handlerConfig = {
         openPicture: openPicture,
@@ -58,6 +59,12 @@
     .catch((err) => {
         console.log(err); 
     }); 
+
+    function initialiseCurrentUser(id) {
+        if(currentUser===undefined)
+            currentUser = id;
+    } 
+    
     function deleteCardHandler(cardTrash){
         confa.deleteCard(cardTrash)
         .catch((err) => {
@@ -132,7 +139,7 @@
         countLike(evt);
      }
     
-     function countLike(evt) {
+    function countLike(evt) {
         const cardId = evt.currentTarget.getAttribute('internal_id');
         if(evt.currentTarget.classList.contains('elements__button_active')){
             likeCard(cardId) 

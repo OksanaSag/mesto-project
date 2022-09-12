@@ -1,10 +1,6 @@
-let currentUser;
-export function initialiseCurrentUser(id) {
-    if(currentUser===undefined)
-        currentUser = id;
-} 
+import {currentUser} from './index.js';
 let count = 0;
-export function createCard (element,  handlerConfig, template ) {
+export function createCard (element,  handlerConfig, template) {
     const clone = template.content.cloneNode(true);
     const elelementsCaption = clone.querySelector('.elements__caption');
     const elementImage = clone.querySelector('.elements__image');
