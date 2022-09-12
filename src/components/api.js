@@ -1,16 +1,16 @@
-const config = {
-headers: {
-    authorization: '2b115875-5f8a-40be-8d8a-4a3dc9ce97a5',
-    'Content-Type': 'application/json',
-},
-}
-
-const checkResponse = (res) => {
-    if (res.ok) {
-      return res.json();
+    const config = {
+    headers: {
+        authorization: '2b115875-5f8a-40be-8d8a-4a3dc9ce97a5',
+        'Content-Type': 'application/json',
+    },
     }
-    return Promise.reject(`Ошибка: ${res.status}`);
-  };
+
+    const checkResponse = (res) => {
+        if (res.ok) {
+        return res.json();
+        }
+        return Promise.reject(`Ошибка: ${res.status}`);
+    };
 
     export const getCards = () => {
         return fetch('https://nomoreparties.co/v1/plus-cohort-14/cards', {
@@ -19,7 +19,7 @@ const checkResponse = (res) => {
         .then((res) => checkResponse(res))
     }
    
-    export const getUserMe = () => {
+    export const getUserInfo = () => {
         return fetch('https://nomoreparties.co/v1/plus-cohort-14/users/me', {
         headers: config.headers,
         })

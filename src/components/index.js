@@ -1,6 +1,6 @@
     import '../pages/index.css';
     import {createCard,initialiseCurrentUser} from './card.js';
-    import {addCard, updateAvatar, updateUserInfo, getUserMe, getCards, likeCard, deleteLike, deleteCard} from './api.js';
+    import {addCard, updateAvatar, updateUserInfo, getUserInfo, getCards, likeCard, deleteLike, deleteCard} from './api.js';
     import {enableValidation, disableButton} from './validate.js';
     import {openPopup, closePopup, openPicture} from './modal.js';
     import {nameInput, profileAvatar, profileDescription, profileName, jobInput, validationConfig, template, renderLoading} from './utils/utils.js';
@@ -39,7 +39,7 @@
         deleteCard: deleteCard
     }
 
-    getUserMe()
+    getUserInfo()
     .then((res) => {
         profileAvatar.src = res.avatar;
         profileName.textContent = res.name;
@@ -72,16 +72,17 @@
         .then((res) => {
             disableButton(validationConfig, newCardButton);
             closePopup(evt.target.formClose);
-            renderLoading(false,newCardButton);
             insertToContainer(createCard(res,handlerConfig,template),true);
+            namePicture.value = '';
+            linkPicture.value = '';
         })
         .catch((err) => {
             console.log(err); 
             
-        }); 
-        const element  = {name:namePicture.value, link:linkPicture.value };
-        namePicture.value = '';
-        linkPicture.value = '';
+        })
+        .finally(() => {
+            renderLoading(false,newCardButton);
+        });
     }
 
     function changeAvatar (evt){
@@ -92,12 +93,14 @@
         .then((res) => {
             disableButton(validationConfig, formButtonAvatar);
             closePopup(evt.target.formClose);
-            renderLoading(false,formButtonAvatar);
+            linkAvatar.value = '';
         })
         .catch((err) => {
             console.log(err); 
-        }); 
-        linkAvatar.value = '';
+        })
+        .finally(() => {
+            renderLoading(false,formButtonAvatar);
+        });
     }
 
     function editProfile(evt) {
@@ -109,15 +112,17 @@
         .then((res) => {
             disableButton(validationConfig, profileNameChange);
             closePopup(evt.target.formClose);
-            renderLoading(false,profileNameChange);
         })
         .catch((err) => {
-            console.log(err); 
-        }); 
+            console.log(err);
+        })
+        .finally(() => {
+            renderLoading(false,profileNameChange);
+        });
     }
 
-    export function insertToContainer(cardElement, isPretend = false) {
-        if(isPretend)
+    export function insertToContainer(cardElement, isPrepend = false) {
+        if(isPrepend)
             template.parentNode.prepend(cardElement);
         else
             template.parentNode.append(cardElement);
@@ -128,7 +133,7 @@
      }
     
      function countLike(evt) {
-        let cardId = evt.currentTarget.getAttribute('internal_id');
+        const cardId = evt.currentTarget.getAttribute('internal_id');
         if(evt.currentTarget.classList.contains('elements__button_active')){
             likeCard(cardId) 
             .catch((err) => {
